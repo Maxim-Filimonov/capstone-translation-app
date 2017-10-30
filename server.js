@@ -10,7 +10,7 @@ mongoose.Promise = global.Promise;
 
 const { router: authRouter, basicStrategy, jwtStrategy } = require('./auth');
 const { router: usersRouter } = require('./users');
-const { router: phrasesRouter } = require('./things');
+const { router: phrasesRouter } = require('./phrases');
 const { PORT, DATABASE_URL } = require('./config');
 
 const app = express(); 
