@@ -23,10 +23,12 @@ const UserSchema = mongoose.Schema({
   lastName: {
     type: String,
     default: ''}
-  });
+});
 
 UserSchema.methods.apiRepr = function () {
-  return { username: this.username };
+  return { 
+    id: this._id,
+    username: this.username };
 };
 
 UserSchema.methods.validatePassword = function (password) {
