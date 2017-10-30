@@ -184,11 +184,11 @@ describe('/api/user', function () {
             expect(res.body.location).to.equal('username');
           });
       });
-      it('Should reject users with password less than ten characters', function () {
+      it('Should reject users with password less than six characters', function () {
         return chai
           .request(app)
           .post('/api/users')
-          .send({ username, password: '123456789' })
+          .send({ username, password: '12345' })
           .then(() =>
             expect.fail(null, null, 'Request should not succeed')
           )

@@ -13,9 +13,17 @@ const UserSchema = mongoose.Schema({
   },
   password: {
     type: String,
-    required: true
-  }
-});
+    required: true,
+    minlength: 6,
+    maxlength: 72
+  },
+  firstName: {
+    type: String,
+    default: ''},
+  lastName: {
+    type: String,
+    default: ''}
+  });
 
 UserSchema.methods.apiRepr = function () {
   return { username: this.username };
