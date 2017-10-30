@@ -1,4 +1,11 @@
 language: node_js
-  node_js: node
-  services:
-  - mongodb
+node_js: node
+services:
+- mongodb
+deploy:
+  provider: heroku
+  api_key:
+    secure: FFpqM/ogL/zThOYUW/ovb3f5tnjhjpif2IKdF8SnwhmuGI4QU8JLVu6rUkuEVOPNBfoDGjtFXGl5kkhJSqBdrMwGAq3JE3N7FfQ34unJTXHeE3eeZ79vkAUb3lrlWlzaluJ8QBHGkbCbgkWx33j5XYntzZHUzdau/GZicJYLL4BtguS8tqsau84JmWLsoC4SCNN1qUwiHSq/X5Ch/n8Q0mwKXDNOdXthPf2dqTa+sabm93EbMz1x9xbPJ2rRHxEYUvD4bisuPMPXOJE067p8KYhFQUYSoIf+pyIUZxsm9f+jhTSvUflu/lFhVcWcGSf7qfEoQEw7Rl8sjji2ZUyqcC9vmC5g1JYnI4Dq+Ozu7JMakRURoVzJVb9mM6j7GPyArico2zldltVzQ0dkkxHcH4UV3G6rlIYmFDhHt6DbQTLsLCQjIIzD+agFYf162W8uA6LtpCN1wi1q296UgCnjTgEuYHiJIaq8pk7GizJXTnIJPy4QuObgz8yfWEBpeEh4ZKYwLrDKj9dzDkldrbJYdzBSwp+MTNMHfCaJODwVyd6Kr4+0lU7lO2T+nKJ7QKZzEweLhUhf0Z2Xel9ojHzAordjJpsuqG/cq49X3N9MLTdulqqDM2kQg/8Ch60gsm0k4Gdc3i+n++xtC4crF+gBKm976M3+7CIo7ZZuJ3Zr1N0=
+  app: text-to-speech-translation-app
+  on:
+    repo: Thinkful-C15/capstone-translation-app
