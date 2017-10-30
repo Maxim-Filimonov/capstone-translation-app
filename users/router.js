@@ -9,12 +9,6 @@ const router = express.Router();
 
 const jsonParser = bodyParser.json();
 
-router.get('/', (req, res) => {
-  User.find()
-    .then(users => {
-      res.status(200).json(users)
-    })
-})
 
 router.post('/', jsonParser, (req, res) => {
   const requiredFields = ['username', 'password'];

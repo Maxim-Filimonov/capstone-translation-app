@@ -7,20 +7,19 @@
  */
 
 var handle = {
-    signup: function (event) {
-     
+  signup: function (event) {
     event.preventDefault();
     const state = event.data;
     const el = $(event.target);
     console.log(el);
     const username = el.find('[name=username]').val().trim();
     const password = el.find('[name=password]').val().trim();
-    el.find('[name=password]').val('');
     el.find('[name=username]').val('');
+    el.find('[name=password]').val('');
 
     api.signup(username, password)
       .then(() => {
-        //TODO add confirmation page
+        //TODO: add confirmation page
         state.view = 'login';
         render.page(state);
       }).catch(err => {
