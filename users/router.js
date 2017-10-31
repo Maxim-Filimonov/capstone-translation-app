@@ -75,7 +75,7 @@ router.post('/', jsonParser, (req, res) => {
     });
   }
 
-  let { username, password } = req.body;
+  let { username, password, firstName, lastName } = req.body;
 
   return User.find({ username })
     .count()
@@ -91,7 +91,7 @@ router.post('/', jsonParser, (req, res) => {
       return User.hashPassword(password);
     })
     .then(hash => {
-      return User.create({ username, password: hash });
+      return User.create({ username, password: hash, firstName, lastName });
     })
     .then(user => {
       return res.status(201).json(user.apiRepr());

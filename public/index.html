@@ -4,26 +4,28 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-	<title>Home</title>
-	<meta name="description" content="">
+	<title>Text to Speech Translation App</title>
+	<meta name="description" content="A text-to-speech translation travel app">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="icon" href="data:;base64,iVBORw0KGgo=">
 	<link rel="stylesheet" type="text/css" href="style.css">
 </head>
 
 <body>
-	<h2>API Client</h2>
-	<ul id="nav">
+<header role="banner">
+	<h1>TEXT TO SPEECH TRANSLATION APP</h1>
+</header>
+	<!-- <ul id="nav">
 		<li> </li><a href="" class="viewSearch">Search</a> |
 		<li> </li><a href="" class="viewSignup">SignUp</a> |
 		<li> </li><a href="" class="viewLogin">Login</a> |
 		<li> </li><a href="" class="viewCreate">Create</a> |
-	</ul>
-	<section id="statusbar">
+	</ul> -->
+	<!-- <section id="statusbar">
 		Token: <span class="message">None</span>
-	</section>
+	</section> -->
 
-	<form id="search" class="view">
+	<!-- <form id="search" class="view">
 		<fieldset>
 			<legend>Search</legend>
 			<div>
@@ -31,22 +33,34 @@
 				<input type="text" name="name" placeholder="enter search">
 			</div>
 			<button type="submit">Submit</button>
-		</fieldset>
+		</fieldset> -->
 
-		<div id="result"></div>
+		<!-- <div id="result"></div>
 		<a href="" class="viewCreate">Insert One</a>
-	</form>
+	</form> -->
 
 	<form id="signup" class="view">
 		<fieldset>
 			<legend>Signup</legend>
 			<div>
+				<label for="firstname">First Name</label>
+				<input type="text" id="first-name" name="first-name">
+			</div>
+			<div>
+				<label for="username">Last Name</label>
+				<input type="text" id="last-name" name="last-name">
+			</div>
+			<div>
 				<label for="username">Username</label>
-				<input type="text" id="username" name="username" value="bobuser">
+				<input type="text" id="username" name="username">
 			</div>
 			<div>
 				<label for="password">Password</label>
-				<input type="password" id="password" name="password" value="knockknock">
+				<input type="password" id="password" name="password">
+			</div>
+			<div>
+				<label for="conf-password">Confirm Password</label>
+				<input type="password" id="conf-password" name="conf-password">
 			</div>
 			<button type="submit">Signup</button> Already have an account? <a href="" class="viewLogin">Login</a>
 		</fieldset>
@@ -57,17 +71,78 @@
 			<legend>Login</legend>
 			<div>
 				<label for="username">Username</label>
-				<input type="text" id="username" name="username" value="bobuser">
+				<input type="text" id="username" name="username">
 			</div>
 			<div>
 				<label for="password">Password</label>
-				<input type="password" id="password" name="password" value="knockknock">
+				<input type="password" id="password" name="password">
 			</div>
 			<button type="submit">Login</button> Don't have an account? <a href="" class="viewSignup">Signup</a>
 		</fieldset>
 	</form>
 
-	<form id="create" class="view">
+	<section id="confirmation" class="view">
+		<fieldset>
+			<legend>Confirmation</legend>
+			<div>Your account is succesfully created!</div>
+			<button type="submit">Click to Begin</button>
+		</fieldset>
+	</section>
+
+	<form id="dashboard" class="view">
+
+		<fieldset>
+				<legend>Dashboard</legend>
+				<p>Hello, User.</p>	
+				<p>Log Out</p>
+				<div>
+					<label for="input">What can I translate for you?</label>
+					<input type="text" id="input" name="input" placeholder="Enter Text">
+					<label class="language" for="language">Select translation langauge</label>
+					<select name="language" id='language' required>
+						<option value="0" selected>Spanish</option>
+						<option value="1">French</option>
+						<option value="2">German</option>
+						<option value="2">Japanese</option>
+						<option value="2">Portuguese-Br</option>
+					</select>
+					<button class="translate">Translate Now</button>
+					<button class="saveToList">Save to List</button>
+				</div>
+				<div class="output">Sample Output Space</div>
+			</fieldset>
+			<fieldset>
+					<legend>Saved Phrases</legend>
+					<div class="container"> 
+						<button class="edit">Edit</button>
+						<ul>
+							<li>Good morning <button class="translate">Translate</button></li>
+							<li>Please Halp<button class="translate">Translate</button></li>
+							<li>Where's the nearest hospital?<button class="translate">Translate</button></li>
+						</ul>
+					</div>
+			</fieldset>
+	</form>
+
+
+	<form id="edit" class="view">
+			<fieldset>
+					<legend>Edit Phrases</legend>
+					<p>Hello, User.</p>	
+					<p>Log Out</p>
+					<div class="container"> 
+						<ul>
+							<li>Good morning <button class="edit">Edit</button><button class="delete">delete</button></li>
+							<li>Please Halp<button class="edit">Edit</button><button class="delete">delete</button></li>
+							<li>Where's the nearest hospital?<button class="edit">Edit</button><button class="delete">delete</button></li>
+						</ul>
+					</div>
+					<button class="save">Save Changes</button>
+					<button class="cancel">Cancel</button>
+			</fieldset>
+	</form>
+
+	<!-- <form id="create" class="view">
 		<fieldset>
 			<legend>Create</legend>
 			<div>
@@ -76,9 +151,9 @@
 			</div>
 			<button type="submit">Submit</button>
 		</fieldset>
-	</form>
+	</form> -->
 
-	<section id="detail" class="view">
+	<!-- <section id="detail" class="view">
 		<fieldset>
 			<legend>Detail</legend>
 			<div>
@@ -88,9 +163,9 @@
 			<a href="" class="edit">Edit</a>
 		</fieldset>
 		<a href="" class="viewList">&lt; Back to list results </a>
-	</section>
+	</section> -->
 
-	<form id="edit" class="view">
+	<!-- <form id="edit" class="view">
 		<fieldset>
 			<legend>Edit</legend>
 			<div>
@@ -99,7 +174,7 @@
 			</div>
 			<button type="submit">Submit</button>
 		</fieldset>
-	</form>
+	</form> -->
 
 	<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
 	 crossorigin="anonymous"></script>
@@ -107,6 +182,7 @@
 		window.jQuery || document.write('<script src="js/vendor/jquery-3.2.1.min.js"><\/script>')
 	</script>
 
+	<script src="//code.jquery.com/jquery.min.js"></script>
 	<!-- <script src="js/ajax.js"></script> -->
 	<script src="js/fetch.js"></script>
 	<script src="js/render.js"></script>

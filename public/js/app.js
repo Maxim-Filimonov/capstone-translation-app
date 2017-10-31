@@ -47,8 +47,8 @@ jQuery(function ($) {
   $('#signup').on('submit', STORE, handle.signup);
   $('#login').on('submit', STORE, handle.login);
 
-  $('#create').on('submit', STORE, handle.create);
-  $('#search').on('submit', STORE, handle.search);
+  // $('#create').on('submit', STORE, handle.create);
+  // $('#search').on('submit', STORE, handle.search);
 
   $('#edit').on('submit', STORE, handle.update);
 

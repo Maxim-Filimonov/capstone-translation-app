@@ -12,7 +12,7 @@
  * 
  */
 
-const ITEMS_URL = '/api/things/';
+const ITEMS_URL = '/api/phrases/';
 const USERS_URL = '/api/users/';
 const LOGIN_URL = '/api/auth/login/';
 const REFRESH_URL = '/api/auth/refresh/';

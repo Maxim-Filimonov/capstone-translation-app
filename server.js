@@ -23,9 +23,9 @@ app.use(cors());
 
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/api/auth/', authRouter);
-app.use('/api/users/', usersRouter);
-app.use('/api/phrases/', phrasesRouter);
+app.use('/api/auth', authRouter);
+app.use('/api/users', usersRouter);
+app.use('/api/phrases', phrasesRouter);
 
 app.use('*', (req, res) => {
   return res.status(404).json({ message: 'Not Found' });

@@ -2,24 +2,24 @@
 
 const bcrypt = require('bcryptjs');
 const mongoose = require('mongoose');
+const { User } = require('../users/models');
 
 mongoose.Promise = global.Promise;
 
 const PhraseSchema = mongoose.Schema({
+  // _owner: { type: Schema.Types.ObjectId, ref: 'User' },
   phrase: {
     type: String,
     required: true,
   },
-  username: {
-    type: String
-  }
+  owner: {type: String},  
 });
 
 PhraseSchema.methods.apiRepr = function () {
   return { 
     id: this._id,
     phrase: this.phrase,
-    username: this.username 
+    owner: this.owner    
   };
 };
 
