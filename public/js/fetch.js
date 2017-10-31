@@ -108,7 +108,7 @@ var api = {
     }).then(normalizeResponseErrors)
       .then(res => res.json());
   },
-  create: function (document, token) {
+  create: function (savedPhrase, token) {
     const url = buildUrl(`${PHRASES_URL}`);
 
     return fetch(url, {
@@ -118,7 +118,7 @@ var api = {
         'Content-Type': 'application/json',
         'Accept': 'application/json'
       },
-      body: document ? JSON.stringify(document) : null
+      body: savedPhrase ? JSON.stringify(savedPhrase) : null
     }).then(normalizeResponseErrors)
       .then(res => res.json());
   },  

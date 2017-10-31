@@ -31,6 +31,10 @@ const render = {
     });
     $('#result').empty().append('<ul>').find('ul').append(listItems);
   },
+  create: function (state) {
+    const savedPhrase = `<li>${state.phrase}<button class="translate">Translate</button></li>`;
+    $('.results').append(savedPhrase);
+  },
   edit: function (state) {
     const el = $('#edit');
     const item = state.item;

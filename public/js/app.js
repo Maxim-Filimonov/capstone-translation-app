@@ -54,7 +54,7 @@ jQuery(function ($) {
 
   //VIEW: DASHBOARD
   $('translatenow');
-  $('savetolist');
+  $('#dashboard').on('submit', STORE, handle.addToList)
   $('translate');
   $('#edit').on('submit', STORE, handle.update);
   $('logout');
