@@ -26,7 +26,7 @@ jQuery(function ($) {
 
   STORE = {
     demo: false,        // display in demo mode true | false
-    view: 'login',      // current view: signup | login | search | create | details | edit 
+    view: 'login',      // current view: signup | confirmation | login | dashboard | edit 
     backTo: null,       // previous view to go back to
     query: {},          // search query values
     list: null,         // search result - array of objects (documents)
@@ -42,19 +42,34 @@ jQuery(function ($) {
       polling: 1000,    // frequency to checkExpiry in ms
     }
   };
-
+  
   // Setup all the event listeners, passing STATE and event to handlers
   $('#signup').on('submit', STORE, handle.signup);
   $('#login').on('submit', STORE, handle.login);
 
+  $('loginpage')
+  $('signuppage')
+  $('clicktobegin')
+
+  //DASHBOARD
+  $('translatenow')
+  $('savetolist')
+  $('translate')
+  $('#edit').on('submit', STORE, handle.update);
+  $('logout')
+  
+  //DASHBOARD: EDIT
+  $('save')
+  $('cancel')
+  $('editphrase')
+  $('savephrase')
+  $('deletephrase')
+
   // $('#create').on('submit', STORE, handle.create);
   // $('#search').on('submit', STORE, handle.search);
-
-  $('#edit').on('submit', STORE, handle.update);
-
-  $('#result').on('click', '.detail', STORE, handle.details);
-  $('#result').on('click', '.remove', STORE, handle.remove);
-  $('#detail').on('click', '.edit', STORE, handle.viewEdit);
+  // $('#result').on('click', '.detail', STORE, handle.details);
+  // $('#result').on('click', '.remove', STORE, handle.remove);
+  // $('#detail').on('click', '.edit', STORE, handle.viewEdit);
   
   $(document).on('click', '.viewCreate', STORE, handle.viewCreate);
   $(document).on('click', '.viewLogin', STORE, handle.viewLogin);

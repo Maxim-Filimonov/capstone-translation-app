@@ -12,15 +12,20 @@ var handle = {
     const state = event.data;
     const el = $(event.target);
     console.log(el);
+    const firstname = el.find('[name=firstname]').val().trim();
+    const lastname = el.find('[name=lastname]').val().trim();
     const username = el.find('[name=username]').val().trim();
     const password = el.find('[name=password]').val().trim();
+    // const confirmPassword = el.find('[name=conf-password]').val().trim();
+    el.find('[name=firstname]').val('');
+    el.find('[name=lastname]').val('');
     el.find('[name=username]').val('');
     el.find('[name=password]').val('');
+    el.find('[name=conf-password]').val('');
 
-    api.signup(username, password)
+    api.signup(username, password, firstname, lastname)
       .then(() => {
-        //TODO: add confirmation page
-        state.view = 'login';
+        state.view = 'confirmation';
         render.page(state);
       }).catch(err => {
         if (err.reason === 'ValidationError') {

@@ -11,7 +11,7 @@
  * 
  */
 
-const ITEMS_URL = '/api/phrases/';
+const PHRASES_URL = '/api/phrases/';
 const USERS_URL = '/api/users/';
 const LOGIN_URL = '/api/auth/login/';
 const REFRESH_URL = '/api/auth/refresh/';
@@ -43,11 +43,13 @@ function normalizeResponseErrors(res) {
 }
 
 var api = {
-  signup: function (username, password) {
+  signup: function (username, password, firstname, lastname) {
     const url = buildUrl(USERS_URL);
     const body = {
-      username: username,
-      password: password
+      username,
+      password,
+      firstname,
+      lastname
     };
 
     return fetch(url, {
@@ -85,7 +87,7 @@ var api = {
       .then(res => res.json());
   },  
   search: function (query) {
-    const url = buildUrl(ITEMS_URL, query);
+    const url = buildUrl(PHRASES_URL, query);
 
     return fetch(url, {
       method: 'GET',
@@ -96,7 +98,7 @@ var api = {
       .then(res => res.json());
   },
   details: function (id) {
-    const url = buildUrl(`${ITEMS_URL}${id}`);
+    const url = buildUrl(`${PHRASES_URL}${id}`);
 
     return fetch(url, {
       method: 'GET',
@@ -107,7 +109,7 @@ var api = {
       .then(res => res.json());
   },
   create: function (document, token) {
-    const url = buildUrl(`${ITEMS_URL}`);
+    const url = buildUrl(`${PHRASES_URL}`);
 
     return fetch(url, {
       method: 'POST',
@@ -121,7 +123,7 @@ var api = {
       .then(res => res.json());
   },  
   update: function (document, token) {
-    const url = buildUrl(`${ITEMS_URL}${document.id}`);
+    const url = buildUrl(`${PHRASES_URL}${document.id}`);
 
     return fetch(url, {
       method: 'PUT',
@@ -135,7 +137,7 @@ var api = {
       .then(res => res.json());
   },
   remove: function (id, token) {
-    const url = buildUrl(`${ITEMS_URL}${id}`);
+    const url = buildUrl(`${PHRASES_URL}${id}`);
 
     return fetch(url, {
       method: 'DELETE',

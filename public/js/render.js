@@ -11,7 +11,7 @@
  * 
  */
 
-var render = {
+ var render = {
   page: function (state) {
     if (state.demo) {
       $('.view').css('background-color', 'gray');
