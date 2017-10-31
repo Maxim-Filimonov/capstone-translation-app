@@ -20,7 +20,7 @@
  */
 
 // Make STORE global so it can be easily accessed in Dev Tools 
-var STORE;
+let STORE;
 //on document ready bind events
 jQuery(function ($) {
 
@@ -43,27 +43,26 @@ jQuery(function ($) {
     }
   };
   
-  // Setup all the event listeners, passing STATE and event to handlers
+  //VIEWS: SIGNUP, CONFIRMATION, LOGIN
   $('#signup').on('submit', STORE, handle.signup);
   $('#login').on('submit', STORE, handle.login);
+  $('loginpage');
+  $('signuppage');
+  $('clicktobegin');
 
-  $('loginpage')
-  $('signuppage')
-  $('clicktobegin')
-
-  //DASHBOARD
-  $('translatenow')
-  $('savetolist')
-  $('translate')
+  //VIEW: DASHBOARD
+  $('translatenow');
+  $('savetolist');
+  $('translate');
   $('#edit').on('submit', STORE, handle.update);
-  $('logout')
+  $('logout');
   
-  //DASHBOARD: EDIT
-  $('save')
-  $('cancel')
-  $('editphrase')
-  $('savephrase')
-  $('deletephrase')
+  //VIEW: EDIT
+  $('save');
+  $('cancel');
+  $('editphrase');
+  $('savephrase');
+  $('deletephrase');
 
   // $('#create').on('submit', STORE, handle.create);
   // $('#search').on('submit', STORE, handle.search);
@@ -79,7 +78,7 @@ jQuery(function ($) {
   $('body').on('click', STORE, handle.refresh);
 
   // start app by triggering a search
-  $('#search').trigger('submit');
+  // $('#search').trigger('submit');
 
   // call checkExpiry once on document.ready
   handle.checkExpiry(STORE);
