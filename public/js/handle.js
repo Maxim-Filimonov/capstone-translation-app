@@ -48,7 +48,7 @@ var handle = {
         state.action = null;
         state.token = response.authToken;
         localStorage.setItem('authToken', state.token);
-        state.view = (state.backTo) ? state.backTo : 'search';
+        state.view = (state.backTo) ? state.backTo : 'dashboard';
         render.page(state);
       }).catch(err => {
         state.action = null;
@@ -212,12 +212,12 @@ var handle = {
         console.error('ERROR:', err);
       });
   },
-  viewCreate: function (event) {
-    event.preventDefault();
-    const state = event.data;
-    state.view = 'create';
-    render.page(state);
-  },
+  // viewCreate: function (event) {
+  //   event.preventDefault();
+  //   const state = event.data;
+  //   state.view = 'create';
+  //   render.page(state);
+  // },
   viewLogin: function (event) {
     event.preventDefault();
     const state = event.data;
@@ -230,22 +230,22 @@ var handle = {
     state.view = 'signup';
     render.page(state);
   },
-  viewSearch: function (event) {
-    event.preventDefault();
-    const state = event.data;
-    if (!state.list) {
-      handle.search(event);
-      return;
-    }
-    state.view = 'search';
-    render.page(state);
-  },
   viewEdit: function (event) {
     event.preventDefault();
     const state = event.data;
     render.edit(state);
-
     state.view = 'edit';
     render.page(state);
   }
+  // viewSearch: function (event) {
+  //   event.preventDefault();
+  //   const state = event.data;
+  //   if (!state.list) {
+  //     handle.search(event);
+  //     return;
+  //   }
+  //   state.view = 'search';
+  //   render.page(state);
+  // },
+
 };

@@ -45,10 +45,12 @@ jQuery(function ($) {
   
   //VIEWS: SIGNUP, CONFIRMATION, LOGIN
   $('#signup').on('submit', STORE, handle.signup);
-  $('#login').on('submit', STORE, handle.login);
-  $('loginpage');
-  $('signuppage');
-  $('clicktobegin');
+  $('#signup').on('click', '.viewLogin', STORE, handle.viewLogin);
+
+  $('#login').on('submit', STORE, handle.login);  
+  $('#login').on('click', '.viewSignup', STORE, handle.viewSignup);
+  
+  $('#confirmation').on('click', STORE, handle.viewLogin);
 
   //VIEW: DASHBOARD
   $('translatenow');
@@ -69,11 +71,8 @@ jQuery(function ($) {
   // $('#result').on('click', '.detail', STORE, handle.details);
   // $('#result').on('click', '.remove', STORE, handle.remove);
   // $('#detail').on('click', '.edit', STORE, handle.viewEdit);
-  
-  $(document).on('click', '.viewCreate', STORE, handle.viewCreate);
-  $(document).on('click', '.viewLogin', STORE, handle.viewLogin);
-  $(document).on('click', '.viewSignup', STORE, handle.viewSignup);
-  $(document).on('click', '.viewSearch', STORE, handle.viewSearch);
+  // $(document).on('click', '.viewCreate', STORE, handle.viewCreate);
+  // $(document).on('click', '.viewSearch', STORE, handle.viewSearch);
 
   $('body').on('click', STORE, handle.refresh);
 
