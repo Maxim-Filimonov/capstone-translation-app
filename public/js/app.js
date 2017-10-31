@@ -53,11 +53,12 @@ jQuery(function ($) {
   $('#confirmation').on('click', STORE, handle.viewLogin);
 
   //VIEW: DASHBOARD
-  $('translatenow');
-  $('#dashboard').on('submit', STORE, handle.addToList)
-  $('translate');
+  $('#dashboard').on('click', '.saveToList', STORE, handle.create);
+  $('#nav').on('click', '.viewLogin', STORE, handle.viewLogin);
   $('#edit').on('submit', STORE, handle.update);
-  $('logout');
+  $('translatenow');  
+  $('translate');
+
   
   //VIEW: EDIT
   $('save');

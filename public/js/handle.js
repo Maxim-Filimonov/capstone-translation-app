@@ -127,19 +127,17 @@ var handle = {
   create: function (event) {
     event.preventDefault();
     const state = event.data;
-    const el = $(event.target);
-
+    const el = $(event.target).parent();
     const savedPhrase = {
-      name: el.find('[name=input]').val()
+      phrase: el.find('#input').val()
     };
+    el.find('#input').val('');
     api.create(savedPhrase, state.token)
       .then(response => {
         state.item = response;
-        //state.list = null; //invalidate cached list results
-        render.create(state)
-        // render.detail(state);
+        render.create(state.item);
         state.view = 'dashboard';
-          render.page(state);
+        render.page(state);
       }).catch(err => {
         if (err.status === 401) {
           state.backTo = state.view;

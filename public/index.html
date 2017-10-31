@@ -15,12 +15,10 @@
 <header role="banner">
 	<h1>TEXT TO SPEECH TRANSLATION APP</h1>
 </header>
-	<!-- <ul id="nav">
-		<li> </li><a href="" class="viewSearch">Search</a> |
-		<li> </li><a href="" class="viewSignup">SignUp</a> |
-		<li> </li><a href="" class="viewLogin">Login</a> |
-		<li> </li><a href="" class="viewCreate">Create</a> |
-	</ul> -->
+	<ul id="nav" class="nav-view">
+		<li><p>Hello User</p></li>
+		<li><a href="" class="viewLogin">Logout</a></li>
+	</ul>
 	<!-- <section id="statusbar">
 		Token: <span class="message">None</span>
 	</section> -->
@@ -90,12 +88,9 @@
 	</div>
 
 	<form id="dashboard" class="view">
-
 		<fieldset>
 				<legend>Dashboard</legend>
-				<p>Hello, User.</p>	
-				<p>Log Out</p>
-				<div>
+				<div class="query">
 					<label for="input">What can I translate for you?</label>
 					<input type="text" id="input" name="input" placeholder="Enter Text">
 					<label class="language" for="language">Select translation langauge</label>
@@ -107,7 +102,7 @@
 						<option value="2">Portuguese-Br</option>
 					</select>
 					<button class="translate">Translate Now</button>
-					<button type="submit" class="saveToList">Save to List</button>
+					<button class="saveToList">Save to List</button>
 				</div>
 				<div class="output">Sample Output Space</div>
 			</fieldset>
@@ -128,8 +123,6 @@
 	<form id="edit" class="view">
 			<fieldset>
 					<legend>Edit Phrases</legend>
-					<p>Hello, User.</p>	
-					<p>Log Out</p>
 					<div class="container"> 
 						<ul>
 							<li>Good morning <button class="edit">Edit</button><button class="delete">delete</button></li>

@@ -16,11 +16,14 @@ const render = {
     if (state.demo) {
       $('.view').css('background-color', 'gray');
       $('#' + state.view).css('background-color', 'white');
-    } else {
+    } 
+    // if (state.view === 'signup' || 'confirmation' || 'login'){
+    //   $('.nav-view').hide();
+    // }
+    else {
       $('.view').hide();
       $('#' + state.view).show();  
     }
-
   },
   results: function (state) {
     const listItems = state.list.map((item) => {
