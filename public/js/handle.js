@@ -116,7 +116,6 @@ var handle = {
     const el = $(event.target).parent();
     const phraseToTranslate = {
       phrase: el.find('#input').val(),
-      // language: el.find('#language').val()};
       language: el.find('#language :selected').text()};
     console.log(phraseToTranslate);
   },
