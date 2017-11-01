@@ -18,8 +18,13 @@ const render = {
       $('#' + state.view).css('background-color', 'white');
     } 
     else {
+      if(state.view === 'login' || 'signup' || 'confirmation'){
+        $('#nav').hide();
+      } else {
+        $('#nav').show();
+      }
       $('.view').hide();
-      $('#' + state.view).show();  
+      $('#' + state.view).show(); 
     }
   },
   results: function (state) {

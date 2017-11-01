@@ -103,18 +103,18 @@ var api = {
       .then(res => res.json());
   },
 
-  search: function (query, token) {
-    const url = buildUrl(PHRASES_URL, query);
+  // search: function (query, token) {
+  //   const url = buildUrl(PHRASES_URL, query);
 
-    return fetch(url, {
-      method: 'GET',
-      headers: {
-        'Authorization': `Bearer ${token}`,        
-        'Accept': 'application/json'
-      }
-    }).then(normalizeResponseErrors)
-      .then(res => res.json());
-  },
+  //   return fetch(url, {
+  //     method: 'GET',
+  //     headers: {
+  //       'Authorization': `Bearer ${token}`,        
+  //       'Accept': 'application/json'
+  //     }
+  //   }).then(normalizeResponseErrors)
+  //     .then(res => res.json());
+  // },
 
   details: function (id, token) {
     const url = buildUrl(`${PHRASES_URL}${id}`);

@@ -201,18 +201,14 @@ var handle = {
     event.preventDefault();
     const state = event.data;
     const el = $(event.target);
-
     const document = {
       id: state.item.id,
       phrase: el.find('[name=phrase]').val()
     };
     api.update(document, state.token)
       .then(() => {
-        // state.item = response;
-        state.list = null; //invalidate cached list results
         render.detail(state);
-        state.view = 'edit';
-        render.page(state);
+        handle.viewEdit(event);
       }).catch(err => {
         if (err.status === 401) {
           state.backTo = state.view;
@@ -222,6 +218,12 @@ var handle = {
         console.error('ERROR:', err);
       });
   },
+
+
+
+
+
+  
 
   remove: function (event) {
     event.preventDefault();
@@ -297,7 +299,7 @@ var handle = {
   viewDashboard: function (event) {
     event.preventDefault();
     const state = event.data;
-    state.token = localStorage.getItem('authToken');
+    // state.token = localStorage.getItem('authToken');
     return api.getAll(state.token)
       .then(result => {
         state.list = result;
