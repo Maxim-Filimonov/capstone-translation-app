@@ -49,11 +49,15 @@ const render = {
       </li>`);
     $('.results').append(newPhrase);
   },
+
   edit: function (state) {
-    const el = $('#edit');
+    const el = $('#editDetail');
     const item = state.item;
-    el.find('[name=name]').val(item.name);
+    el.find('[name=phrase]').val(item.phrase);
+    console.log('===name=phrase', el.find('[name=phrase]'));
+    console.log('===item.phrase', item.phrase );
   },
+  
   detail: function (state) {
     const el = $('#detail');
     const item = state.item;

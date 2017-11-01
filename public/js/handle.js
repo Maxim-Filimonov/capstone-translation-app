@@ -98,7 +98,7 @@ var handle = {
       expiry.setUTCSeconds(decoded.exp);
 
       timer.remaining = Math.floor(expiry - now);
-      console.log('Seconds: ', Math.floor(timer.remaining / 1000));
+      // console.log('Seconds: ', Math.floor(timer.remaining / 1000));
       if (timer.remaining < 0) {
         timer.status = 'expired';
       } else if (timer.remaining <= timer.warning) {
@@ -123,10 +123,14 @@ var handle = {
   translate: function(event) {
     event.preventDefault();
     const state = event.data;
-    const el = $(event.target).parent();
-
-    //returns Phrase ID
-    $(event.target).closest('li').attr('id');
+    //returns language
+    const language = $('#dashboard').find('#language :selected').text();
+    const id = $(event.target).closest('li').attr('id');
+    api.details(id, state.token)
+      .then(result => {
+        const phrase = result.phrase;
+        console.log({phrase, language});
+      });
   },
 
   // search: function (event) {
@@ -152,24 +156,21 @@ var handle = {
   //     });
   // },
 
-  // details: function (event) {
-  //   event.preventDefault();
-  //   const state = event.data;
-  //   const el = $(event.target);
-
-  //   const id = el.closest('li').attr('id');
-  //   api.details(id)
-  //     .then(response => {
-  //       state.item = response;
-  //       render.detail(state);
-
-  //       state.view = 'detail';
-  //       render.page(state);
-
-  //     }).catch(err => {
-  //       state.error = err;
-  //     });
-  // },
+  showEdit: function (event) {
+    event.preventDefault();
+    const state = event.data;
+    const el = $(event.target);
+    const id = el.closest('li').attr('id');
+    api.details(id, state.token)
+      .then(response => {
+        state.item = response;
+        render.edit(state);
+        state.view = 'editDetail';
+        render.page(state);      
+      }).catch(err => {
+        state.error = err;
+      });
+  },
 
   create: function (event) {
     event.preventDefault();
@@ -203,14 +204,14 @@ var handle = {
 
     const document = {
       id: state.item.id,
-      name: el.find('[name=name]').val()
+      phrase: el.find('[name=phrase]').val()
     };
     api.update(document, state.token)
-      .then(response => {
-        state.item = response;
+      .then(() => {
+        // state.item = response;
         state.list = null; //invalidate cached list results
         render.detail(state);
-        state.view = 'detail';
+        state.view = 'edit';
         render.page(state);
       }).catch(err => {
         if (err.status === 401) {
@@ -228,7 +229,7 @@ var handle = {
     const id = $(event.target).closest('li').attr('id');
     api.remove(id, state.token)
       .then(() => {
-        // state.list = null;
+        state.list = null;
         handle.viewEdit(event);
         render.page(state);
       });
@@ -255,9 +256,7 @@ var handle = {
   viewEdit: function (event) {
     event.preventDefault();
     const state = event.data;
-    // render.edit(state);
-    const token = localStorage.getItem('authToken');
-    return api.getAll(token)
+    return api.getAll(state.token)
       .then(result => {
         state.list = result;
         render.resultsEdit(state);

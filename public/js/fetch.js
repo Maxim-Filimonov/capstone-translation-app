@@ -103,24 +103,26 @@ var api = {
       .then(res => res.json());
   },
 
-  search: function (query) {
+  search: function (query, token) {
     const url = buildUrl(PHRASES_URL, query);
 
     return fetch(url, {
       method: 'GET',
       headers: {
+        'Authorization': `Bearer ${token}`,        
         'Accept': 'application/json'
       }
     }).then(normalizeResponseErrors)
       .then(res => res.json());
   },
 
-  details: function (id) {
+  details: function (id, token) {
     const url = buildUrl(`${PHRASES_URL}${id}`);
 
     return fetch(url, {
       method: 'GET',
       headers: {
+        'Authorization': `Bearer ${token}`,                
         'Accept': 'application/json'
       }
     }).then(normalizeResponseErrors)
@@ -153,8 +155,8 @@ var api = {
         'Accept': 'application/json'
       },
       body: document ? JSON.stringify(document) : null
-    }).then(normalizeResponseErrors)
-      .then(res => res.json());
+    }).then(normalizeResponseErrors);
+    // .then(res => res.json());
   },
 
   remove: function (id, token) {

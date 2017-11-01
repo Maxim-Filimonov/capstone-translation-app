@@ -24,6 +24,17 @@ router.get('/', jwtAuth, (req, res) => {
       res.status(500).json({message: 'Internal server error'});
     });
 });
+
+router.get('/:id', jwtAuth, (req, res) => {
+  Phrase
+    .findById(req.params.id)
+    .then(phrases => {
+      res.status(200).json(phrases.apiRepr());
+    })
+    .catch(err => {
+      res.status(500).json({message: 'Internal server error'});
+    });
+});
  
 router.post('/', jsonParser, jwtAuth, (req, res) => {
   if(!('phrase' in req.body)){

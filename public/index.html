@@ -93,7 +93,7 @@
 				<div class="query">
 					<label for="input">What can I translate for you?</label>
 					<input type="text" id="input" name="input" placeholder="Enter Text">
-					<label class="language" for="language">Select` translation language</label>
+					<label class="language" for="language">Select translation language</label>
 					<select name="language" id='language' required>
 						<option value="0" selected>French</option>
 						<option value="1">German</option>
@@ -130,12 +130,23 @@
 			</fieldset>
 	</form>
 
+	<form id="editDetail" class="view">
+		<fieldset>
+				<legend>Detail</legend>
+				<div class="container"> 
+					<label for="name">Edit:</label>
+					<input type="text" name="phrase">
+				</div>
+				<button type="submit" class="submit-edit">Save</button> 
+				<button class="js-viewDashboard">Return to Dashboard</button>
+		</fieldset>
+</form>
+
 	<!-- <form id="create" class="view">
 		<fieldset>
 			<legend>Create</legend>
 			<div>
-				<label for="name">Name</label>
-				<input type="text" name="name">
+			
 			</div>
 			<button type="submit">Submit</button>
 		</fieldset>

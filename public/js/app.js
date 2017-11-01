@@ -26,7 +26,7 @@ jQuery(function ($) {
 
   STORE = {
     demo: false,        // display in demo mode true | false
-    view: 'login',      // current view: signup | confirmation | login | dashboard | edit 
+    view: 'login',      // current view: signup | confirmation | login | dashboard | edit | editDetail
     backTo: null,       // previous view to go back to
     query: {},          // search query values
     list: null,         // search result - array of objects (documents)
@@ -59,11 +59,11 @@ jQuery(function ($) {
   $('#dashboard').on('click', '.js-translateNow', STORE, handle.translateNow);  
   $('#dashboard').on('click', '.js-translate', STORE, handle.translate);
 
-  //VIEW: EDIT
-  $('editphrase');
-  $('savephrase');
+  //VIEW: EDIT & EDIT-DETAIL
+  $('#edit').on('click', '.js-edit', STORE, handle.showEdit);
+  $('#editDetail').on('submit', STORE, handle.update);
   $('#edit').on('click', '.js-delete', STORE, handle.remove);
-  $('#edit').on('click', '.js-viewDashboard', STORE, handle.viewDashboard);
+  $('form').on('click', '.js-viewDashboard', STORE, handle.viewDashboard);
 
   //NAV BAR
   $('#nav').on('click', '.js-viewLogout', STORE, handle.logout);
