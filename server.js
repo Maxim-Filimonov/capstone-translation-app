@@ -11,6 +11,7 @@ mongoose.Promise = global.Promise;
 const { router: authRouter, basicStrategy, jwtStrategy } = require('./auth');
 const { router: usersRouter } = require('./users');
 const { router: phrasesRouter } = require('./phrases');
+const { router: translatorRouter } = require('./translator/router');
 const { PORT, DATABASE_URL } = require('./config');
 
 const app = express(); 
@@ -26,6 +27,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/api/auth', authRouter);
 app.use('/api/users', usersRouter);
 app.use('/api/phrases', phrasesRouter);
+app.use('/api/translate', translatorRouter);
 
 app.use('*', (req, res) => {
   return res.status(404).json({ message: 'Not Found' });
