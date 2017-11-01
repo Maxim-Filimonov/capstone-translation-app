@@ -1,6 +1,6 @@
 'TEXT-TO-AUDIO TRAVEL TRANSLATOR'
 
-This app allows users to translate input english text input to a selected output langauge in both written and speech formats. Users may select from a list of pre-populated, commonly used travel terms and in addition be able to create, read, update and delete their own statements from the same list. The supported ouput languages are: Spanish, French, German, Japanese and Portuguese-Brazil. 
+This app allows users to translate input english text input to a selected output langauge in both written and speech formats. Users may select from a list of pre-populated, commonly used travel terms and in addition be able to create, read, update and delete their own statements from the same list. The supported ouput languages are: Spanish, French, German, Japanese, Portuguese-Brazil, and Italian.
 
 AS a USER, you will be able to:
 (1) REGISTER for a profile 

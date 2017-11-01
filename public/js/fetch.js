@@ -62,6 +62,7 @@ var api = {
     }).then(normalizeResponseErrors)
       .then(res => res.json());
   },
+
   login: function (username, password) {
     const url = buildUrl(LOGIN_URL);
     const base64Encoded = window.btoa(`${username}:${password}`);
@@ -75,8 +76,10 @@ var api = {
     }).then(normalizeResponseErrors)
       .then(res => res.json());
   },
+
   refresh: function (token) {
     const url = buildUrl(REFRESH_URL);
+
     return fetch(url, {
       method: 'POST',
       headers: {
@@ -86,6 +89,20 @@ var api = {
     }).then(normalizeResponseErrors)
       .then(res => res.json());
   },  
+
+  getAll: function (token) {
+    const url = buildUrl(PHRASES_URL);
+
+    return fetch(url, {
+      method: 'GET',
+      headers: {
+        'Authorization': `Bearer ${token}`,
+        'Accept': 'application/json'
+      }
+    }).then(normalizeResponseErrors)
+      .then(res => res.json());
+  },
+
   search: function (query) {
     const url = buildUrl(PHRASES_URL, query);
 
@@ -97,6 +114,7 @@ var api = {
     }).then(normalizeResponseErrors)
       .then(res => res.json());
   },
+
   details: function (id) {
     const url = buildUrl(`${PHRASES_URL}${id}`);
 
@@ -108,6 +126,7 @@ var api = {
     }).then(normalizeResponseErrors)
       .then(res => res.json());
   },
+
   create: function (savedPhrase, token) {
     const url = buildUrl(`${PHRASES_URL}`);
 
@@ -122,6 +141,7 @@ var api = {
     }).then(normalizeResponseErrors)
       .then(res => res.json());
   },  
+
   update: function (document, token) {
     const url = buildUrl(`${PHRASES_URL}${document.id}`);
 
@@ -136,8 +156,9 @@ var api = {
     }).then(normalizeResponseErrors)
       .then(res => res.json());
   },
+
   remove: function (id, token) {
-    const url = buildUrl(`${PHRASES_URL}${id}`);
+    const url = buildUrl(`${PHRASES_URL}/${id}`);
 
     return fetch(url, {
       method: 'DELETE',
@@ -149,5 +170,3 @@ var api = {
       .then(res => res.text());
   }
 };
-
-

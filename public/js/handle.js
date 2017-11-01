@@ -11,7 +11,6 @@ var handle = {
     event.preventDefault();
     const state = event.data;
     const el = $(event.target);
-    console.log(el);
     const firstname = el.find('[name=firstname]').val().trim();
     const lastname = el.find('[name=lastname]').val().trim();
     const username = el.find('[name=username]').val().trim();
@@ -42,6 +41,8 @@ var handle = {
     const el = $(event.target);
     const username = el.find('[name=username]').val().trim();
     const password = el.find('[name=password]').val().trim();
+    el.find('[name=username]').val('');
+    el.find('[name=password]').val('');
     state.action = 'getToken';
     api.login(username, password)
       .then(response => {
@@ -50,6 +51,14 @@ var handle = {
         localStorage.setItem('authToken', state.token);
         state.view = (state.backTo) ? state.backTo : 'dashboard';
         render.page(state);
+
+        return api.getAll(state.token);
+      })
+      .then(result => {
+        state.list = result;
+        render.results(state);
+        render.page(state);
+
       }).catch(err => {
         state.action = null;
         if (err.reason === 'ValidationError') {
@@ -101,28 +110,67 @@ var handle = {
     }
   },
 
-  search: function (event) {
+  translateNow: function(event) {
     event.preventDefault();
     const state = event.data;
-    const el = $(event.target);
-    const name = el.find('[name=name]').val();
-    var query;
-    if (name) {
-      query = {
-        name: el.find('[name=name]').val()
-      };
-    }
-    api.search(query)
-      .then(response => {
-        state.list = response;
-        render.results(state);
-
-        state.view = 'search';
-        render.page(state);
-      }).catch(err => {
-        console.error('ERROR:', err);
-      });
+    const el = $(event.target).parent();
+    const phraseToTranslate = {
+      phrase: el.find('#input').val(),
+      // language: el.find('#language').val()};
+      language: el.find('#language :selected').text()};
+    console.log(phraseToTranslate);
   },
+
+  translate: function(event) {
+    event.preventDefault();
+    const state = event.data;
+    const el = $(event.target).parent();
+
+    //returns Phrase ID
+    $(event.target).closest('li').attr('id');
+  },
+
+  // search: function (event) {
+  //   event.preventDefault();
+  //   const state = event.data;
+  //   const el = $(event.target);
+  //   const name = el.find('[name=name]').val();
+  //   var query;
+  //   if (name) {
+  //     query = {
+  //       name: el.find('[name=name]').val()
+  //     };
+  //   }
+  //   api.search(query)
+  //     .then(response => {
+  //       state.list = response;
+  //       render.results(state);
+
+  //       state.view = 'search';
+  //       render.page(state);
+  //     }).catch(err => {
+  //       console.error('ERROR:', err);
+  //     });
+  // },
+
+  // details: function (event) {
+  //   event.preventDefault();
+  //   const state = event.data;
+  //   const el = $(event.target);
+
+  //   const id = el.closest('li').attr('id');
+  //   api.details(id)
+  //     .then(response => {
+  //       state.item = response;
+  //       render.detail(state);
+
+  //       state.view = 'detail';
+  //       render.page(state);
+
+  //     }).catch(err => {
+  //       state.error = err;
+  //     });
+  // },
 
   create: function (event) {
     event.preventDefault();
@@ -135,7 +183,8 @@ var handle = {
     api.create(savedPhrase, state.token)
       .then(response => {
         state.item = response;
-        render.create(state.item);
+        state.list = null; //invalidate cached list results
+        render.create(state);
         state.view = 'dashboard';
         render.page(state);
       }).catch(err => {
@@ -174,42 +223,28 @@ var handle = {
       });
   },
 
-  details: function (event) {
-    event.preventDefault();
-    const state = event.data;
-    const el = $(event.target);
-
-    const id = el.closest('li').attr('id');
-    api.details(id)
-      .then(response => {
-        state.item = response;
-        render.detail(state);
-
-        state.view = 'detail';
-        render.page(state);
-
-      }).catch(err => {
-        state.error = err;
-      });
-  },
-
   remove: function (event) {
     event.preventDefault();
     const state = event.data;
     const id = $(event.target).closest('li').attr('id');
-
     api.remove(id, state.token)
       .then(() => {
-        state.list = null; //invalidate cached list results
-        return handle.search(event);
-      }).catch(err => {
-        if (err.status === 401) {
-          state.backTo = state.view;
-          state.view = 'signup';
-          render.page(state);
-        }
-        console.error('ERROR:', err);
+        // state.list = null;
+        handle.viewEdit(event);
+        render.page(state);
       });
+
+    // .then(() => {
+    //   state.list = null; //invalidate cached list results
+    //   return handle.search(event);
+    // }).catch(err => {
+    //   if (err.status === 401) {
+    //     state.backTo = state.view;
+    //     state.view = 'signup';
+    //     render.page(state);
+    //   }
+    //   console.error('ERROR:', err);
+    // });
   },
   // viewCreate: function (event) {
   //   event.preventDefault();
@@ -217,24 +252,61 @@ var handle = {
   //   state.view = 'create';
   //   render.page(state);
   // },
+
+  viewEdit: function (event) {
+    event.preventDefault();
+    const state = event.data;
+    // render.edit(state);
+    const token = localStorage.getItem('authToken');
+    return api.getAll(token)
+      .then(result => {
+        state.list = result;
+        render.resultsEdit(state);
+        state.view = 'edit';    
+        render.page(state);
+      }).catch(err => {
+        state.action = null;
+        if (err.reason === 'ValidationError') {
+          console.error('ERROR:', err.reason, err.message);
+        } else {
+          console.error('ERROR:', err);
+        }
+      });
+  },
+
+  logout: function (event) {
+    event.preventDefault();
+    localStorage.removeItem('authToken');
+    const state = event.data;
+    state.view = 'login';
+    render.page(state);
+  },
+
   viewLogin: function (event) {
     event.preventDefault();
     const state = event.data;
     state.view = 'login';
     render.page(state);
   },
+
   viewSignup: function (event) {
     event.preventDefault();
     const state = event.data;
     state.view = 'signup';
     render.page(state);
   },
-  viewEdit: function (event) {
+
+  viewDashboard: function (event) {
     event.preventDefault();
     const state = event.data;
-    render.edit(state);
-    state.view = 'edit';
-    render.page(state);
+    state.token = localStorage.getItem('authToken');
+    return api.getAll(state.token)
+      .then(result => {
+        state.list = result;
+        render.results(state);
+        state.view = 'dashboard';
+        render.page(state);
+      });
   }
   // viewSearch: function (event) {
   //   event.preventDefault();

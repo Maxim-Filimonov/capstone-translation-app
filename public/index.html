@@ -15,9 +15,9 @@
 <header role="banner">
 	<h1>TEXT TO SPEECH TRANSLATION APP</h1>
 </header>
-	<ul id="nav" class="nav-view">
+	<ul id="nav" class="nav-view js-nav-view">
 		<li><p>Hello User</p></li>
-		<li><a href="" class="viewLogin">Logout</a></li>
+		<li><a href="" class="viewLogout js-viewLogout">Logout</a></li>
 	</ul>
 	<!-- <section id="statusbar">
 		Token: <span class="message">None</span>
@@ -93,16 +93,17 @@
 				<div class="query">
 					<label for="input">What can I translate for you?</label>
 					<input type="text" id="input" name="input" placeholder="Enter Text">
-					<label class="language" for="language">Select translation langauge</label>
+					<label class="language" for="language">Select` translation language</label>
 					<select name="language" id='language' required>
-						<option value="0" selected>Spanish</option>
-						<option value="1">French</option>
-						<option value="2">German</option>
-						<option value="2">Japanese</option>
-						<option value="2">Portuguese-Br</option>
+						<option value="0" selected>French</option>
+						<option value="1">German</option>
+						<option value="2">Italian</option>
+						<option value="3">Japanese</option>
+						<option value="4">Portuguese-Br</option>
+						<option value="5">Spanish</option>
 					</select>
-					<button class="translate">Translate Now</button>
-					<button class="saveToList">Save to List</button>
+					<button class="translate js-translateNow">Translate Now</button>
+					<button class="saveToList js-saveToList">Save to List</button>
 				</div>
 				<div class="output">Sample Output Space</div>
 			</fieldset>
@@ -111,27 +112,21 @@
 					<div class="container"> 
 						<button class="edit">Edit</button>
 						<ul class="results">
-							<li>Good morning <button class="translate">Translate</button></li>
-							<li>Please Halp<button class="translate">Translate</button></li>
-							<li>Where's the nearest hospital?<button class="translate">Translate</button></li>
+							
 						</ul>
 					</div>
 			</fieldset>
 	</form>
 
-
 	<form id="edit" class="view">
 			<fieldset>
 					<legend>Edit Phrases</legend>
 					<div class="container"> 
-						<ul>
-							<li>Good morning <button class="edit">Edit</button><button class="delete">delete</button></li>
-							<li>Please Halp<button class="edit">Edit</button><button class="delete">delete</button></li>
-							<li>Where's the nearest hospital?<button class="edit">Edit</button><button class="delete">delete</button></li>
+						<ul class="edit-results">
+						
 						</ul>
 					</div>
-					<button class="save">Save Changes</button>
-					<button class="cancel">Cancel</button>
+					<button class="js-viewDashboard">Return to Dashboard</button>
 			</fieldset>
 	</form>
 

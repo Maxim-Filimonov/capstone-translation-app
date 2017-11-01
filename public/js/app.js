@@ -53,19 +53,21 @@ jQuery(function ($) {
   $('#confirmation').on('click', STORE, handle.viewLogin);
 
   //VIEW: DASHBOARD
-  $('#dashboard').on('click', '.saveToList', STORE, handle.create);
-  $('#nav').on('click', '.viewLogin', STORE, handle.viewLogin);
-  $('#edit').on('submit', STORE, handle.update);
-  $('translatenow');  
-  $('translate');
-
+  $('#dashboard').on('click', '.js-saveToList', STORE, handle.create);
+  $('#dashboard').on('click', '.edit', STORE, handle.viewEdit);
   
+  $('#dashboard').on('click', '.js-translateNow', STORE, handle.translateNow);  
+  $('#dashboard').on('click', '.js-translate', STORE, handle.translate);
+
   //VIEW: EDIT
-  $('save');
-  $('cancel');
   $('editphrase');
   $('savephrase');
-  $('deletephrase');
+  $('#edit').on('click', '.js-delete', STORE, handle.remove);
+  $('#edit').on('click', '.js-viewDashboard', STORE, handle.viewDashboard);
+
+  //NAV BAR
+  $('#nav').on('click', '.js-viewLogout', STORE, handle.logout);
+  
 
   // $('#create').on('submit', STORE, handle.create);
   // $('#search').on('submit', STORE, handle.search);

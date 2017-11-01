@@ -17,26 +17,37 @@ const render = {
       $('.view').css('background-color', 'gray');
       $('#' + state.view).css('background-color', 'white');
     } 
-    // if (state.view === 'signup' || 'confirmation' || 'login'){
-    //   $('.nav-view').hide();
-    // }
     else {
       $('.view').hide();
       $('#' + state.view).show();  
     }
   },
   results: function (state) {
-    const listItems = state.list.map((item) => {
-      return `<li id="${item.id}">
-                <a href="" class="detail">Name: ${item.name}</a>
-                <a href="#" class="remove">X</a>
+    const allPhrases = state.list.map((phrase) => {
+      return `<li id=${phrase._id}>
+                ${phrase.phrase}
+                <button class="translate js-translate">Translate</button>
               </li>`;
     });
-    $('#result').empty().append('<ul>').find('ul').append(listItems);
+    $('.results').empty().append(allPhrases);
+  },
+  resultsEdit: function (state) {
+    const allPhrases = state.list.map((phrase) => {
+      return `<li id=${phrase._id}>
+                ${phrase.phrase}
+                <button class="edit js-edit">Edit</button>
+                <button class="delete js-delete">Delete</button>
+              </li>`;
+    });
+    $('.edit-results').empty().append(allPhrases);
   },
   create: function (state) {
-    const savedPhrase = `<li>${state.phrase}<button class="translate">Translate</button></li>`;
-    $('.results').append(savedPhrase);
+    const newPhrase = (
+      `<li id=${state.item.id}>
+        ${state.item.phrase}
+        <button class="translate js-translate">Translate</button>
+      </li>`);
+    $('.results').append(newPhrase);
   },
   edit: function (state) {
     const el = $('#edit');
