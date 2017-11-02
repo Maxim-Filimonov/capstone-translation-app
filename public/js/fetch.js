@@ -15,7 +15,7 @@ const PHRASES_URL = '/api/phrases/';
 const USERS_URL = '/api/users/';
 const LOGIN_URL = '/api/auth/login/';
 const REFRESH_URL = '/api/auth/refresh/';
-const TRANSLATE_URL = '/api/translate';
+const TRANSLATE_URL = '/api/translate/';
 
 function buildUrl(path, query) {
   var url = new URL(path, window.location.origin);
@@ -104,7 +104,7 @@ var api = {
       .then(res => res.json());
   },
 
-  details: function (id, token) {
+  detail: function (id, token) {
     const url = buildUrl(`${PHRASES_URL}${id}`);
 
     return fetch(url, {
@@ -169,8 +169,6 @@ var api = {
         'Accept': 'application/json'
       },
       body: document ? JSON.stringify(document) : null
-    })
-    // .then(normalizeResponseErrors)
-      .then(res => res.json());
+    });
   }
 };

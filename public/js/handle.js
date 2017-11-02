@@ -43,22 +43,17 @@ var handle = {
     const password = el.find('[name=password]').val().trim();
     el.find('[name=username]').val('');
     el.find('[name=password]').val('');
-    state.action = 'getToken';
     api.login(username, password)
       .then(response => {
-        state.action = null;
         state.token = response.authToken;
         localStorage.setItem('authToken', state.token);
         state.view = (state.backTo) ? state.backTo : 'dashboard';
-        render.page(state);
-
         return api.getAll(state.token);
       })
       .then(result => {
         state.list = result;
         render.results(state);
         render.page(state);
-
       }).catch(err => {
         state.action = null;
         if (err.reason === 'ValidationError') {
@@ -123,7 +118,7 @@ var handle = {
 
         //DISPLAY RESULT
         render.translate(result);
-        handle.viewDashboard;
+        render.page(state);
       });
   },
 
@@ -132,14 +127,14 @@ var handle = {
     const state = event.data;
     const language = $('#dashboard').find('#language :selected').text();
     const id = $(event.target).closest('li').attr('id');
-    api.details(id, state.token)
+    api.detail(id, state.token)
       .then(result => {
         const phrase = result.phrase;
         const document = {phrase, language};
         api.translate(document)
           .then(result => {
             render.translate(result);
-            handle.viewDashboard;
+            render.page(state);
           });
       });
   },
@@ -167,12 +162,12 @@ var handle = {
   //     });
   // },
 
-  showEdit: function (event) {
+  EditDetail: function (event) {
     event.preventDefault();
     const state = event.data;
     const el = $(event.target);
     const id = el.closest('li').attr('id');
-    api.details(id, state.token)
+    api.detail(id, state.token)
       .then(response => {
         state.item = response;
         render.edit(state);
@@ -196,7 +191,6 @@ var handle = {
         state.item = response;
         state.list = null; //invalidate cached list results
         render.create(state);
-        state.view = 'dashboard';
         render.page(state);
       }).catch(err => {
         if (err.status === 401) {
@@ -230,12 +224,6 @@ var handle = {
       });
   },
 
-
-
-
-
-  
-
   remove: function (event) {
     event.preventDefault();
     const state = event.data;
@@ -246,25 +234,7 @@ var handle = {
         handle.viewEdit(event);
         render.page(state);
       });
-
-    // .then(() => {
-    //   state.list = null; //invalidate cached list results
-    //   return handle.search(event);
-    // }).catch(err => {
-    //   if (err.status === 401) {
-    //     state.backTo = state.view;
-    //     state.view = 'signup';
-    //     render.page(state);
-    //   }
-    //   console.error('ERROR:', err);
-    // });
   },
-  // viewCreate: function (event) {
-  //   event.preventDefault();
-  //   const state = event.data;
-  //   state.view = 'create';
-  //   render.page(state);
-  // },
 
   viewEdit: function (event) {
     event.preventDefault();
@@ -319,15 +289,4 @@ var handle = {
         render.page(state);
       });
   }
-  // viewSearch: function (event) {
-  //   event.preventDefault();
-  //   const state = event.data;
-  //   if (!state.list) {
-  //     handle.search(event);
-  //     return;
-  //   }
-  //   state.view = 'search';
-  //   render.page(state);
-  // },
-
 };

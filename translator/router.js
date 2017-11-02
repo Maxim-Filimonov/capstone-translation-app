@@ -68,21 +68,22 @@ router.post('/', jsonParser, (req, res, next) => {
         accept: 'audio/ogg'
       });
 
-      // DISPLAY RESULT
-      res.json(translatedText);
-
-      //PLAY AUDIO
-      // transcript.on('response', (res) => {
-      //   if (req.query.download) {
-      //     res.headers['content-disposition'] = `attachment; filename=transcript.${getFileExtension(req.query.accept)}`;
-      //   }
-      // });
-      // transcript.on('error', function() {
-      //   console.log(error);
-      //   res.status(500).send(error);
+      // // DISPLAY RESULT
+      // res.json(translatedText);
+      res.set('x-phrase', translatedText);
+      
+      // PLAY AUDIO
+      transcript.on('response', (res) => {
+        if (req.query.download) {
+          res.headers['content-disposition'] = `attachment; filename=transcript.${getFileExtension(req.query.accept)}`;
+        }
+      });
+      transcript.on('error', function() {
+        console.log(error);
+        res.status(500).send(error);
   
-      // });
-      // transcript.pipe(res);
+      });
+      transcript.pipe(res);
     } 
   });
 });

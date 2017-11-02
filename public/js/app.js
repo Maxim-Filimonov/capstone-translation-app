@@ -60,7 +60,7 @@ jQuery(function ($) {
   $('#dashboard').on('click', '.js-translate', STORE, handle.translate);
 
   //VIEW: EDIT & EDIT-DETAIL
-  $('#edit').on('click', '.js-edit', STORE, handle.showEdit);
+  $('#edit').on('click', '.js-edit', STORE, handle.EditDetail);
   $('#editDetail').on('submit', STORE, handle.update);
   $('#edit').on('click', '.js-delete', STORE, handle.remove);
   $('form').on('click', '.js-viewDashboard', STORE, handle.viewDashboard);
