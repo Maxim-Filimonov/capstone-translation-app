@@ -19,6 +19,8 @@ const text_to_speech = new TextToSpeechV1({
   password: 'p3ptpvHBWOzg'
 });
 
+let translatedText;
+
 router.post('/', jsonParser, (req, res, next) => {
   const textToTranslate = req.body.phrase;
   let languageToTranslate; 
@@ -59,64 +61,30 @@ router.post('/', jsonParser, (req, res, next) => {
       console.log(err);
     }
     else {
-      let translatedText = translation.translations[0].translation;
+      translatedText = translation.translations[0].translation;
       const transcript = text_to_speech.synthesize({
         text: translatedText,
         voice: speakingVoice,
         accept: 'audio/ogg'
       });
-      res.json(translatedText);
 
-      // transcript.on('response', (response) => {
-      //   if (req.query.download) {
-      //     response.json(translatedText).headers['content-disposition'] = `attachment; filename=transcript.${getFileExtension(req.query.accept)}`;
-      //   }
-      // });
-      // transcript.on('error', function() {
-      //   console.log(error);
-      //   res.status(500).send(error);
+      //DISPLAY RESULT
+      // res.json(translatedText);
+
+      //PLAY AUDIO
+      transcript.on('response', (res) => {
+        if (req.query.download) {
+          res.headers['content-disposition'] = `attachment; filename=transcript.${getFileExtension(req.query.accept)}`;
+        }
+      });
+      transcript.on('error', function() {
+        console.log(error);
+        res.status(500).send(error);
   
-      // });
-      // transcript.pipe(res);
+      });
+      transcript.pipe(res);
     } 
   });
 });
-
-// const translator = {
-//   synthesize:
-//   function translator(textToTranslate, lang, language_translator) { 
-//     language_translator.translate({
-//       url: 'https://gateway.watsonplatform.net/language-translator/api',
-//       text: textToTranslate,
-//       source: 'en',
-//       target: lang
-//     }, function(err, translation) {
-//       if (err) {
-//         console.log(err);
-//       }
-//       else {
-          
-//         let textToAudio = translation.translations[0].translation;
-//         const transcript = textToSpeech.synthesize({
-//           text: textToAudio,
-//           voice: 'es-ES_EnriqueVoice',
-//           accept: 'audio/wav'
-//         });
-//         transcript.on('response', (response) => {
-//           if (req.query.download) {
-//             response.headers['content-disposition'] = `attachment; filename=transcript.${getFileExtension(req.query.accept)}`;
-//           }
-//         });
-//         transcript.on('error', function() {
-//           console.log(error);
-//           res.status(500).send(error);
-  
-//         });
-//         transcript.pipe(res);
-          
-//       } 
-//     });
-//   }
-// };
 
 module.exports = { router };

@@ -120,6 +120,8 @@ var handle = {
     };
     api.translate(document)
       .then(result => {
+
+        //DISPLAY RESULT
         render.translate(result);
         handle.viewDashboard;
       });

@@ -68,6 +68,7 @@ const render = {
     el.find('.name').text(item.name);
   },
 
+  //DISPLAY RESULT
   translate: function(phrase) {
     $('#dashboard').find('.output').html('');
     $('#dashboard').find('.output').html(phrase);
