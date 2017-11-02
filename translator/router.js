@@ -20,7 +20,6 @@ const text_to_speech = new TextToSpeechV1({
 });
 
 router.post('/', jsonParser, (req, res, next) => {
-  console.log('===req.body', req.body);
   const textToTranslate = req.body.phrase;
   let languageToTranslate; 
   let speakingVoice;
@@ -45,7 +44,7 @@ router.post('/', jsonParser, (req, res, next) => {
     languageToTranslate = 'it-IT';
     speakingVoice = 'it-IT_FrancescaVoice';
   } 
-  if (req.body.language === 'Portuguese-BR') {
+  if (req.body.language === 'Portuguese-Br') {
     languageToTranslate = 'pt-BR';
     speakingVoice = 'pt-BR_IsabelaVoice';
   } 
@@ -60,24 +59,25 @@ router.post('/', jsonParser, (req, res, next) => {
       console.log(err);
     }
     else {
-      let textForAudio = translation.translations[0].translation;
+      let translatedText = translation.translations[0].translation;
       const transcript = text_to_speech.synthesize({
-        text: textForAudio,
+        text: translatedText,
         voice: speakingVoice,
-        accept: 'audio/wav'
+        accept: 'audio/ogg'
       });
-      transcript.on('response', (response) => {
-        if (req.query.download) {
-          response.headers['content-disposition'] = `attachment; filename=transcript.${getFileExtension(req.query.accept)}`;
-        }
-      });
-      transcript.on('error', function() {
-        console.log(error);
-        res.status(500).send(error);
+      res.json(translatedText);
+
+      // transcript.on('response', (response) => {
+      //   if (req.query.download) {
+      //     response.json(translatedText).headers['content-disposition'] = `attachment; filename=transcript.${getFileExtension(req.query.accept)}`;
+      //   }
+      // });
+      // transcript.on('error', function() {
+      //   console.log(error);
+      //   res.status(500).send(error);
   
-      });
-      transcript.pipe(res);
-          
+      // });
+      // transcript.pipe(res);
     } 
   });
 });

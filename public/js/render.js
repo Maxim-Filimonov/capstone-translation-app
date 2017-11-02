@@ -60,8 +60,6 @@ const render = {
     const el = $('#editDetail');
     const item = state.item;
     el.find('[name=phrase]').val(item.phrase);
-    console.log('===name=phrase', el.find('[name=phrase]'));
-    console.log('===item.phrase', item.phrase );
   },
   
   detail: function (state) {
@@ -69,6 +67,12 @@ const render = {
     const item = state.item;
     el.find('.name').text(item.name);
   },
+
+  translate: function(phrase) {
+    $('#dashboard').find('.output').html('');
+    $('#dashboard').find('.output').html(phrase);
+  },
+
   status: function (state) {
     const timer = state.timer;
     switch (timer.status) {
@@ -83,4 +87,7 @@ const render = {
       break;
     }
   }
+
+  
+
 };

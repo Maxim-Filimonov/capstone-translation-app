@@ -120,20 +120,25 @@ var handle = {
     };
     api.translate(document)
       .then(result => {
-        console.log(result);
+        render.translate(result);
+        handle.viewDashboard;
       });
   },
 
   translate: function(event) {
     event.preventDefault();
     const state = event.data;
-    //returns language
     const language = $('#dashboard').find('#language :selected').text();
     const id = $(event.target).closest('li').attr('id');
     api.details(id, state.token)
       .then(result => {
         const phrase = result.phrase;
-        console.log({phrase, language});
+        const document = {phrase, language};
+        api.translate(document)
+          .then(result => {
+            render.translate(result);
+            handle.viewDashboard;
+          });
       });
   },
 
