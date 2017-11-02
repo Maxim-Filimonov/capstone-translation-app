@@ -144,7 +144,6 @@ var api = {
       },
       body: document ? JSON.stringify(document) : null
     }).then(normalizeResponseErrors);
-    // .then(res => res.json());
   },
 
   remove: function (id, token) {

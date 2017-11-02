@@ -1,3 +1,12 @@
+* {
+  box-sizing: border-box;
+}
+
+/* font-family: 'Cabin', sans-serif;
+font-family: 'Bree Serif', serif;
+font-family: 'Exo', sans-serif;
+font-family: 'Lobster Two', cursive; */
+
 form, section {
   margin-top: 10px;
 }
@@ -5,6 +14,41 @@ label {
   display: block;
   display:inline-block;
   width: 80px;
+}
+
+body {
+  background-image: url("http://upperhandchiro.com/wp-content/uploads/2016/10/Items-You-Shouldn%E2%80%99t-Take-On-Summer-Holiday-.jpg");
+  background-repeat: no-repeat;
+  background-size: 100%;
+  
+}
+
+main {
+  /* background-color: rgba(255, 255, 255, 0.3); */
+}
+
+header {
+  text-align: center;
+}
+
+h1 {
+  font-size: 2em;
+  font-family: 'Roboto', sans-serif;
+  margin: 120px auto 50px;
+}
+
+#nav {
+  list-style-type: none;  
+  position: absolute;
+  right: 0
+}
+
+.view {
+  text-align: center;
+}
+
+fieldset {
+  border: 0;
 }
 
 button, input[type=submit] {

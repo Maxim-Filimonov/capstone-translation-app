@@ -65,7 +65,7 @@ router.post('/', jsonParser, (req, res, next) => {
       const transcript = text_to_speech.synthesize({
         text: translatedText,
         voice: speakingVoice,
-        accept: 'audio/ogg'
+        accept: 'audio/wav'
       });
 
       // // DISPLAY RESULT

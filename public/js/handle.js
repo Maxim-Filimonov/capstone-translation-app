@@ -116,8 +116,11 @@ var handle = {
     api.translate(document)
       .then(result => {
 
-        //DISPLAY RESULT
-        render.translate(result);
+        // var audio = new Audio(result);
+        // audio.play();
+
+        const outputText = result.headers.get('x-phrase');
+        render.translate(outputText);
         render.page(state);
       });
   },
@@ -131,36 +134,14 @@ var handle = {
       .then(result => {
         const phrase = result.phrase;
         const document = {phrase, language};
-        api.translate(document)
-          .then(result => {
-            render.translate(result);
-            render.page(state);
-          });
+        return api.translate(document);
+      })
+      .then(result => {
+        const outputText = result.headers.get('x-phrase');            
+        render.translate(outputText);
+        render.page(state);
       });
   },
-
-  // search: function (event) {
-  //   event.preventDefault();
-  //   const state = event.data;
-  //   const el = $(event.target);
-  //   const name = el.find('[name=name]').val();
-  //   var query;
-  //   if (name) {
-  //     query = {
-  //       name: el.find('[name=name]').val()
-  //     };
-  //   }
-  //   api.search(query)
-  //     .then(response => {
-  //       state.list = response;
-  //       render.results(state);
-
-  //       state.view = 'search';
-  //       render.page(state);
-  //     }).catch(err => {
-  //       console.error('ERROR:', err);
-  //     });
-  // },
 
   EditDetail: function (event) {
     event.preventDefault();
