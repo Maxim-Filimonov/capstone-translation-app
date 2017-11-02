@@ -2,7 +2,7 @@
 const express = require('express');
 const app = express();
 const router = express.Router();
-
+const jsonParser = require('body-parser').json();
 
 const watson = require('watson-developer-cloud');
 const language_translator = watson.language_translator({
@@ -13,13 +13,14 @@ const language_translator = watson.language_translator({
 });
 
 const TextToSpeechV1 = require('watson-developer-cloud/text-to-speech/v1');
-const fs = require('fs');
-const textToSpeech = new TextToSpeechV1({
+// const fs = require('fs');
+const text_to_speech = new TextToSpeechV1({
   username: '2835f5d1-0a4a-4e04-87e6-3e0dfc85b3d7',
   password: 'p3ptpvHBWOzg'
 });
 
-router.get('/', (req, res, next) => {
+router.post('/', jsonParser, (req, res, next) => {
+  console.log('===req.body', req.body);
   const textToTranslate = req.body.phrase;
   let languageToTranslate; 
   let speakingVoice;
@@ -48,6 +49,7 @@ router.get('/', (req, res, next) => {
     languageToTranslate = 'pt-BR';
     speakingVoice = 'pt-BR_IsabelaVoice';
   } 
+  
   language_translator.translate({
     url: 'https://gateway.watsonplatform.net/language-translator/api',
     text: textToTranslate,
@@ -59,7 +61,7 @@ router.get('/', (req, res, next) => {
     }
     else {
       let textForAudio = translation.translations[0].translation;
-      const transcript = textToSpeech.synthesize({
+      const transcript = text_to_speech.synthesize({
         text: textForAudio,
         voice: speakingVoice,
         accept: 'audio/wav'

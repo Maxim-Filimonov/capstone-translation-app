@@ -114,9 +114,11 @@ var handle = {
     event.preventDefault();
     const state = event.data;
     const el = $(event.target).parent();
-    const phrase = el.find('#input').val();
-    const language = el.find('#language :selected').text();
-    api.translate(phrase, language)
+    const document = {
+      phrase: el.find('#input').val(),
+      language: el.find('#language :selected').text()
+    };
+    api.translate(document)
       .then(result => {
         console.log(result);
       });

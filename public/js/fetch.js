@@ -160,14 +160,15 @@ var api = {
       .then(res => res.text());
   },
 
-  translate: function (phrase, language) {
+  translate: function (document) {
     const url = buildUrl(`${TRANSLATE_URL}`);
-
     return fetch(url, {
-      method: 'GET',
+      method: 'POST',
       headers: {
+        'Content-Type': 'application/json',        
         'Accept': 'application/json'
-      }
+      },
+      body: document ? JSON.stringify(document) : null
     })
     // .then(normalizeResponseErrors)
       .then(res => res.json());

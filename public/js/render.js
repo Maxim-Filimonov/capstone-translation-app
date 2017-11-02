@@ -18,7 +18,8 @@ const render = {
       $('#' + state.view).css('background-color', 'white');
     } 
     else {
-      if(state.view === 'login' || 'signup' || 'confirmation'){
+      const unwantedViews = ['login', 'signup', 'confirmation'];
+      if (unwantedViews.includes(state.view)) {
         $('#nav').hide();
       } else {
         $('#nav').show();
