@@ -75,6 +75,11 @@ const render = {
     $('#dashboard').find('.output').html(phrase);
   },
 
+  clearSearch: function() {
+    $('#dashboard').find('input').val('');
+    $('#dashboard').find('.output').text('Your text will translate here.');
+  },
+
   status: function (state) {
     const timer = state.timer;
     switch (timer.status) {

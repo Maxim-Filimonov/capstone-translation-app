@@ -241,6 +241,7 @@ var handle = {
     localStorage.removeItem('authToken');
     const state = event.data;
     state.view = 'login';
+    render.clearSearch();
     render.page(state);
   },
 
@@ -266,6 +267,7 @@ var handle = {
       .then(result => {
         state.list = result;
         render.results(state);
+        render.clearSearch();
         state.view = 'dashboard';
         render.page(state);
       });
