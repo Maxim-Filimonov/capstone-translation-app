@@ -42,6 +42,7 @@ jQuery(function ($) {
       polling: 1000,    // frequency to checkExpiry in ms
     }
   };
+
   //VIEWS: SIGNUP, CONFIRMATION, LOGIN
   $('#signup').on('submit', STORE, handle.signup);
   $('#signup').on('click', '.viewLogin', STORE, handle.viewLogin);
