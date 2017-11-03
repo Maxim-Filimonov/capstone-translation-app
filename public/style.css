@@ -2,11 +2,6 @@
   box-sizing: border-box;
 }
 
-/* .top {
-  background-color: blue;
-  height: 50px;
-} */
-
 form, section {
   margin-top: 10px;
 }
@@ -105,9 +100,36 @@ fieldset input:hover {
   border: 1px rgb(8, 173, 202) solid;
 }
 
-label {
+/* label {
   font-size: 1.1em;
+  color: white;
+  background-color:rgb(8, 173, 202);
+  border: 1px;
+  border-radius: 0.2px;
+} */
 
+label {
+  width: 100px;
+  height: 30px;
+  position: relative;
+  background: rgba(59, 148, 161, 0.904);
+  font-size: 1em;
+  color: white;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  padding: 6px 0;
+}
+
+label:before {
+  content: "";
+  position: absolute;
+  right: -15px;
+  bottom: 0;
+  width: 0;
+  height: 0;
+  border-left: 15px solid rgba(59, 148, 161, 0.904);;
+  border-top: 15px solid transparent;
+  border-bottom: 15px solid transparent;
 }
 
 legend {
@@ -266,17 +288,19 @@ button:hover {
 }
 
 .js-edit {
-  width: 60px;
-  height: 60px;
+  width: 55px;
+  height: 55px;
   font-size: 14px;
   background-color: rgb(247, 133, 133);
+  border-radius: 3px;
 }
 
 .delete {
-  width: 60px;
-  height: 60px;
+  width: 55px;
+  height: 55px;
   font-size: 14px;
   background-color: rgb(209, 71, 71);
+  border-radius: 3px;  
 }
 
 #edit li {

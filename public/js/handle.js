@@ -116,9 +116,12 @@ var handle = {
     api.translate(document)
       .then(result => {
 
-        // var audio = new Audio(result);
-        // audio.play();
-
+        result.blob().then((blob) => {
+          const url = window.URL.createObjectURL(blob);
+          $('.audio').attr('src', url);
+          $('.audio').attr('type', 'audio/wav;codecs=opus');
+        });
+  
         const outputText = result.headers.get('x-phrase');
         render.translate(outputText);
         render.page(state);
@@ -137,6 +140,13 @@ var handle = {
         return api.translate(document);
       })
       .then(result => {
+
+        result.blob().then((blob) => {
+          const url = window.URL.createObjectURL(blob);
+          $('.audio').attr('src', url);
+          $('.audio').attr('type', 'audio/wav;codecs=opus');
+        });
+
         const outputText = result.headers.get('x-phrase');            
         render.translate(outputText);
         render.page(state);
