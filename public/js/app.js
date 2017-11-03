@@ -43,6 +43,8 @@ jQuery(function ($) {
     }
   };
 
+  render.page(STORE);
+
   //VIEWS: SIGNUP, CONFIRMATION, LOGIN
   $('#signup').on('submit', STORE, handle.signup);
   $('#signup').on('click', '.viewLogin', STORE, handle.viewLogin);

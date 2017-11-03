@@ -3,20 +3,21 @@ const express = require('express');
 const app = express();
 const router = express.Router();
 const jsonParser = require('body-parser').json();
+const { LANG_TRANS_USER, LANG_TRANS_PASS, TEXT_TO_SPEECH_USER, TEXT_TO_SPEECH_PASS } = require('../config');
 
 const watson = require('watson-developer-cloud');
 const language_translator = watson.language_translator({
   url: 'https://gateway.watsonplatform.net/language-translator/api',
-  username: '28abb1bc-a068-4748-9d1f-4a73d4a19d55',
-  password: 'xuZEb1vpXlE8',
+  username: LANG_TRANS_USER,
+  password: LANG_TRANS_PASS,
   version: 'v2'
 });
 
 const TextToSpeechV1 = require('watson-developer-cloud/text-to-speech/v1');
 // const fs = require('fs');
 const text_to_speech = new TextToSpeechV1({
-  username: '2835f5d1-0a4a-4e04-87e6-3e0dfc85b3d7',
-  password: 'p3ptpvHBWOzg'
+  username: TEXT_TO_SPEECH_USER,
+  password: TEXT_TO_SPEECH_PASS
 });
 
 let translatedText;

@@ -29,6 +29,7 @@ const render = {
       $('#' + state.view).show(); 
     }
   },
+
   results: function (state) {
     const allPhrases = state.list.map((phrase) => {
       return `<li id=${phrase._id}>
