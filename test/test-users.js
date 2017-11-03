@@ -21,11 +21,11 @@ describe('/api/user', function () {
   const passwordB = 'examplePassB';
 
   before(function () {
-    return runServer();
+    return runServer(TEST_DATABASE_URL);
   });
 
   after(function () {
-    return closeServer(TEST_DATABASE_URL);
+    return closeServer();
   });
 
   beforeEach(function () { });
