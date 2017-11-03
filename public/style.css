@@ -2,10 +2,10 @@
   box-sizing: border-box;
 }
 
-/* font-family: 'Cabin', sans-serif;
-font-family: 'Bree Serif', serif;
-font-family: 'Exo', sans-serif;
-font-family: 'Lobster Two', cursive; */
+/* .top {
+  background-color: blue;
+  height: 50px;
+} */
 
 form, section {
   margin-top: 10px;
@@ -19,52 +19,277 @@ label {
 body {
   background-image: url("http://upperhandchiro.com/wp-content/uploads/2016/10/Items-You-Shouldn%E2%80%99t-Take-On-Summer-Holiday-.jpg");
   background-repeat: no-repeat;
-  background-size: 100%;
-  
+  background-attachment: fixed;
+  background-size: cover;
+  font-family: 'News Cycle', sans-serif;
 }
 
 main {
-  /* background-color: rgba(255, 255, 255, 0.3); */
+  height: 100%;
+  position: relative;
 }
 
 header {
   text-align: center;
+  margin: 0px auto;
+  position: relative;
 }
 
 h1 {
+  background-color: white;
+  font-family: 'Roboto', sans-serif;  
   font-size: 2em;
-  font-family: 'Roboto', sans-serif;
-  margin: 120px auto 50px;
+  margin: 0 auto;
+  padding: 10px
+}
+
+p {
+  font-size: 1.2em;
+}
+
+a {
+  text-decoration: none;
+  color: rgb(247, 133, 133);
+  font-weight: bold;
+  transition: all 0.1s ease;
+}
+
+a:hover {
+  color: rgb(255, 68, 68);
+  transition: all 0.1s ease;
 }
 
 #nav {
+  font-size: 1.1em;
+  font-weight: bold;
+  color: rgb(255, 255, 255);
+  background-color: rgb(8, 173, 202);  
   list-style-type: none;  
-  position: absolute;
-  right: 0
+  padding: 8px 20px;
+  height: 35px;
+  text-align: right;
+}
+
+#nav li {
+  margin: 0 3px
 }
 
 .view {
   text-align: center;
 }
 
+#signup,
+#login,
+#confirmation {
+  margin-top: 60px;
+}
+
 fieldset {
   border: 0;
+}
+
+fieldset input, fieldset textarea {
+  font-size: 1.2em;
+  height: 30px;
+  margin-bottom: 10px;
+  display:table-cell; 
+  width: 300px;
+  box-shadow: none;
+  text-shadow: none;
+  border:none;
+  border-radius: 2px;  
+  box-shadow:none
+}
+
+fieldset input:hover {
+  border: 1px rgb(8, 173, 202) solid;
+}
+
+label {
+  font-size: 1.1em;
+
+}
+
+legend {
+  font-family: 'Lobster', cursive;  
+  font-size: 2.6em;
+  color: rgb(255, 238, 0);
+  margin: 20px
 }
 
 button, input[type=submit] {
   height: 30px;
   width: 100px;
-  background-color: lightblue;
+  background-color: lightblue;  
 }
 
 button {
+  width: 200px;
   height: 30px;
-  width: 100px;
-  margin-left: 20px;
-  margin-top: 20px;
-  background-color: lightblue;
+  font-size: 1.1em; 
+  color: rgb(255, 255, 255);
+  background-color: rgb(8, 173, 202);
+  box-shadow: none;
+  text-shadow: none;
+  border:none;
+  border-radius: 2px;  
+  box-shadow:none;
+  margin: 20px
+}
+
+button:hover {
+  color: rgb(54, 54, 54);
+  cursor: pointer;
+  transition: all 0.3s ease;
 }
 
 #nav li {
   display: inline
+}
+
+#input {
+  height: 30px;
+  width: 440px;
+  font-size: 1.1em;
+  box-shadow: none;
+  text-shadow: none;
+  border:none;
+  border-radius: 2px;  
+  box-shadow:none
+}
+
+#input:hover {
+  border: 1px rgb(8, 173, 202) solid;
+}
+
+#language {
+  height: 30px;
+  font-size: 14px
+}
+
+.output {
+  margin: 20px auto 0;
+  padding: 10px 0;
+  font-size: 2em;
+  background: white;
+  width: 650px;
+  transform: scale(1);
+  transition: all 0.2s ease;
+  border: rgb(8, 173, 202) 1px solid
+}
+
+.output:hover {
+  webkit-transform: scale(1.1);
+  -ms-transform: scale(1.1);
+  transform: scale(1.1);
+  transition: all 0.2s ease;
+}
+
+#saved-phrases {
+  margin-top: 50px;
+  position: relative;
+}
+
+.saved-phrases-container {
+  width: 650px;
+  background-color: white;
+  margin: 0 auto;
+  position: relative;
+  border-radius: 2px;
+}
+
+.js-translate {
+  width: 80px;
+  height: 50px;
+  background: rgb(247, 133, 133);
+  position: relative;
+  -moz-border-radius:    10px;
+  -webkit-border-radius: 10px;
+  border-radius:         10px;
+  font-size: 14px;
+}
+.js-translate:before {
+  content:"";
+  position: absolute;
+  right: 100%;
+  top: 14px;
+  width: 0;
+  height: 0;
+  border-top: 10px solid transparent;
+  border-right: 20px solid rgb(247, 133, 133);
+  border-bottom: 10px solid transparent;
+}
+
+.js-translate:hover {
+  border: none;
+}
+
+.results li,
+.edit-result {
+  font-size: 1.5em;
+}
+
+.edit-list {
+  width: 60px;
+  height: 60px;
+  font-size: 14px;
+  display: inline;
+  position: relative;
+  right: -320px;
+  background-color: rgb(247, 133, 133);
+  border-radius: 50px;
+}
+
+.edit-list:hover {
+  color: rgb(54, 54, 54);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: none;
+}
+
+.saved-phrases-container ul {
+  position: relative;
+  top: -50px
+}
+
+.edit-container {
+  width: 650px;
+  background-color: white;
+  margin: 0 auto;
+  position: relative;
+  border-radius: 2px;
+}
+
+.edit-container ul  {
+  font-size: 1.5em;
+  vertical-align: auto;
+}
+
+.js-edit {
+  width: 60px;
+  height: 60px;
+  font-size: 14px;
+  background-color: rgb(247, 133, 133);
+}
+
+.delete {
+  width: 60px;
+  height: 60px;
+  font-size: 14px;
+  background-color: rgb(209, 71, 71);
+}
+
+#edit li {
+  display: inline-block;
+}
+
+#login,
+#editDetail {
+  margin-top: 230px;
+}
+
+#editDetail input {
+  width: 560px;
+  font-size: 1.5em;
+  height: 50px
 }

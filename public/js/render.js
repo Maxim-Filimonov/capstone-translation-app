@@ -20,9 +20,10 @@ const render = {
     else {
       const unwantedViews = ['login', 'signup', 'confirmation'];
       if (unwantedViews.includes(state.view)) {
-        $('#nav').hide();
+        $('#nav').html('').append('<li>"A spetacular travel app!" - Thinkful</li>');
       } else {
-        $('#nav').show();
+        $('#nav').html('').append(`<li>Hello User!</li>
+        <li><a href="" class="viewLogout js-viewLogout">Logout</a></li>`);
       }
       $('.view').hide();
       $('#' + state.view).show(); 
@@ -32,7 +33,7 @@ const render = {
     const allPhrases = state.list.map((phrase) => {
       return `<li id=${phrase._id}>
                 ${phrase.phrase}
-                <button class="translate js-translate">Translate</button>
+                <button class="translate js-translate">Translate!</button>
               </li>`;
     });
     $('.results').empty().append(allPhrases);
@@ -51,7 +52,7 @@ const render = {
     const newPhrase = (
       `<li id=${state.item.id}>
         ${state.item.phrase}
-        <button class="translate js-translate">Translate</button>
+        <button class="translate js-translate">Translate!</button>
       </li>`);
     $('.results').append(newPhrase);
   },
@@ -70,7 +71,7 @@ const render = {
 
   //DISPLAY RESULT
   translate: function(phrase) {
-    $('#dashboard').find('.output').html('');
+    // $('#dashboard').find('.output').html('');
     $('#dashboard').find('.output').html(phrase);
   },
 
@@ -88,7 +89,4 @@ const render = {
       break;
     }
   }
-
-  
-
 };

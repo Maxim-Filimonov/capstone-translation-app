@@ -10,28 +10,29 @@
 	<link rel="icon" href="data:;base64,iVBORw0KGgo=">
 	<link rel="stylesheet" href="	http://meyerweb.com/eric/tools/css/reset/reset.css">
 	<link rel="stylesheet" type="text/css" href="style.css"> 
-	<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">	
+	<link href="https://fonts.googleapis.com/css?family=Lobster|News+Cycle|Roboto" rel="stylesheet">
 </head>
 
 <body>
 <main role="main">
 <header role="banner">
 	<h1>TEXT TO SPEECH TRANSLATION APP</h1>
-</header>
 	<ul id="nav" class="nav-view js-nav-view">
-		<li>Hello User</li>
-		<li><a href="" class="viewLogout js-viewLogout">Logout</a></li>
-	</ul>
-
+			<li>Hello User!</li>
+			<li><a href="" class="viewLogout js-viewLogout">Logout</a></li>
+		</ul>
+</header>
+	
 	<form id="signup" class="view">
 		<fieldset>
-			<legend>Signup</legend>
+			<legend>Sign Up</legend>
+			<div class="container">					
 			<div>
 				<label for="firstname">First Name</label>
 				<input type="text" id="firstname" name="firstname">
 			</div>
 			<div>
-				<label for="username">Last Name</label>
+				<label for="lastname">Last Name</label>
 				<input type="text" id="lastname" name="lastname">
 			</div>
 			<div>
@@ -46,7 +47,9 @@
 				<label for="conf-password">Confirm Password</label>
 				<input type="password" id="conf-password" name="conf-password">
 			</div>
-			<button type="submit">Signup</button> Already have an account? <a href="" class="viewLogin">Login</a>
+		</div>		
+			<button type="submit">Sign Up</button> 
+			<p>Already have an account? <a href="" class="viewLogin">Login</a></p>
 		</fieldset>
 	</form>
 
@@ -61,7 +64,8 @@
 				<label for="password">Password</label>
 				<input type="password" id="password" name="password">
 			</div>
-			<button type="submit">Login</button> Don't have an account? <a href="" class="viewSignup">Signup</a>
+			<button type="submit">Login</button> 
+			<p>Don't have an account? <a href="" class="viewSignup">Signup</a></p>
 		</fieldset>
 	</form>
 
@@ -77,9 +81,8 @@
 		<fieldset>
 				<legend>Dashboard</legend>
 				<div class="query">
-					<label for="input">What can I translate for you?</label>
-					<input type="text" id="input" name="input" placeholder="Enter Text">
-					<label class="language" for="language">Select translation language</label>
+					<input type="text" id="input" name="input" placeholder="Enter Text to Translate">
+					<label class="language" for="language">Select language:</label>
 					<select name="language" id='language' required>
 						<option value="0" selected>French</option>
 						<option value="1">German</option>
@@ -88,17 +91,17 @@
 						<option value="4">Portuguese-Br</option>
 						<option value="5">Spanish</option>
 					</select>
+					<div class="output">Your text will translate here.</div>	
 					<button class="translate js-translateNow">Translate Now</button>
 					<button class="saveToList js-saveToList">Save to List</button>
 				</div>
-				<div class="output"> </div>
 			</fieldset>
-			<fieldset>
+			<fieldset id="saved-phrases">
 					<legend>Saved Phrases</legend>
-					<div class="container"> 
-						<button class="edit">Edit</button>
+					<div class="saved-phrases-container"> 
+						<button class="edit-list">Edit List</button>
 						<ul class="results">
-							
+							<!-- Result gets rendered here -->
 						</ul>
 					</div>
 			</fieldset>
@@ -107,7 +110,7 @@
 	<form id="edit" class="view">
 			<fieldset>
 					<legend>Edit Phrases</legend>
-					<div class="container"> 
+					<div class="edit-container"> 
 						<ul class="edit-results">
 						
 						</ul>
@@ -118,19 +121,14 @@
 
 	<form id="editDetail" class="view">
 		<fieldset>
-				<legend>Detail</legend>
+				<legend>Phrase Editor</legend>
 				<div class="container"> 
-					<label for="name">Edit:</label>
 					<input type="text" name="phrase">
 				</div>
 				<button type="submit" class="submit-edit">Save</button> 
 				<button class="js-viewDashboard">Return to Dashboard</button>
 		</fieldset>
 	</form>
-	<!-- <audio controls autoplay>
-		<source src=“horse.ogg” type=“audio/ogg”>
-		<source src=“horse.mp3” type=“audio/mpeg”>
-	</audio> -->
 
 	<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
 	 crossorigin="anonymous"></script>

@@ -1,4 +1,4 @@
-/* global jQuery, handle */
+/* global jQuery, handle, render */
 'use strict';
 /**
  * Event Listener
@@ -42,7 +42,6 @@ jQuery(function ($) {
       polling: 1000,    // frequency to checkExpiry in ms
     }
   };
-  
   //VIEWS: SIGNUP, CONFIRMATION, LOGIN
   $('#signup').on('submit', STORE, handle.signup);
   $('#signup').on('click', '.viewLogin', STORE, handle.viewLogin);
@@ -54,7 +53,7 @@ jQuery(function ($) {
 
   //VIEW: DASHBOARD
   $('#dashboard').on('click', '.js-saveToList', STORE, handle.create);
-  $('#dashboard').on('click', '.edit', STORE, handle.viewEdit);
+  $('#dashboard').on('click', '.edit-list', STORE, handle.viewEdit);
   
   $('#dashboard').on('click', '.js-translateNow', STORE, handle.translateNow);  
   $('#dashboard').on('click', '.js-translate', STORE, handle.translate);
@@ -68,23 +67,11 @@ jQuery(function ($) {
   //NAV BAR
   $('#nav').on('click', '.js-viewLogout', STORE, handle.logout);
   
-
-  // $('#create').on('submit', STORE, handle.create);
-  // $('#search').on('submit', STORE, handle.search);
-  // $('#result').on('click', '.detail', STORE, handle.details);
-  // $('#result').on('click', '.remove', STORE, handle.remove);
-  // $('#detail').on('click', '.edit', STORE, handle.viewEdit);
-  // $(document).on('click', '.viewCreate', STORE, handle.viewCreate);
-  // $(document).on('click', '.viewSearch', STORE, handle.viewSearch);
-
+  //REFRESH TOKEN
   $('body').on('click', STORE, handle.refresh);
-
-  // start app by triggering a search
-  // $('#search').trigger('submit');
 
   // call checkExpiry once on document.ready
   handle.checkExpiry(STORE);
   // poll checkExpiry every few seconds to update status bar
   setInterval(() => handle.checkExpiry(STORE), STORE.timer.polling);
-
 });
