@@ -70,7 +70,6 @@ router.post('/', jsonParser, (req, res, next) => {
       });
 
       // // DISPLAY RESULT
-      // res.json(translatedText);
       res.set('x-phrase', translatedText);
       
       // PLAY AUDIO
