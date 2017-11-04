@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/Thinkful-C15/capstone-translation-app.svg?branch=feature-quang)](https://travis-ci.org/Thinkful-C15/capstone-translation-app)
+
 #TEXT-TO-AUDIO TRAVEL TRANSLATOR
 
 ##ABOUT THIS PROJECT
