@@ -25,6 +25,7 @@ let STORE;
 jQuery(function ($) {
 
   STORE = {
+    username: null,
     demo: false,        // display in demo mode true | false
     view: 'login',      // current view: signup | confirmation | login | dashboard | edit | editDetail
     backTo: null,       // previous view to go back to

@@ -12,7 +12,7 @@
  */
 
 const render = {
-  page: function (state) {
+  page: function (state, usernamGlobal) {
     if (state.demo) {
       $('.view').css('background-color', 'gray');
       $('#' + state.view).css('background-color', 'white');
@@ -22,7 +22,7 @@ const render = {
       if (unwantedViews.includes(state.view)) {
         $('#nav').html('').append('<li>"A spectacular travel app!" - Thinkful</li>');
       } else {
-        $('#nav').html('').append(`<li>Hello User!</li>
+        $('#nav').html('').append(`<li>Signed in as ${usernameGlobal}!</li>
         <li><a href="" class="viewLogout js-viewLogout">Logout</a></li>`);
       }
       $('.view').hide();
