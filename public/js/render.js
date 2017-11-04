@@ -20,7 +20,7 @@ const render = {
     else {
       const unwantedViews = ['login', 'signup', 'confirmation'];
       if (unwantedViews.includes(state.view)) {
-        $('#nav').html('').append('<li>"A spetacular travel app!" - Thinkful</li>');
+        $('#nav').html('').append('<li>"A spectacular travel app!" - Thinkful</li>');
       } else {
         $('#nav').html('').append(`<li>Hello User!</li>
         <li><a href="" class="viewLogout js-viewLogout">Logout</a></li>`);
