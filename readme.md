@@ -18,29 +18,30 @@ AS a USER, you will be able to:
 * LOGOUT from the profile
 
 ##TECHNOLOGY STACK
-FRONT-END TECHNOLOGIES:
+
+###FRONT-END TECHNOLOGIES:
 * JavaScript
 * CSS
 * HTML
 * jQuery
 
-SERVER TECHNOLOGIES:
+###SERVER TECHNOLOGIES:
 * IBM API: Watson Developer
 * RESTful API
 * Node JS
 * Express
 * Passport: Basic and JWT authentication
 
-DATA PERSISTENCE: 
+###DATA PERSISTENCE: 
 * ​MongoDB
 * mLab
 
-DEVELOPMENT/DEPLOYMENT: 
+###DEVELOPMENT/DEPLOYMENT: 
 * Travis CI
 * Heroku
 * Git & GitHub
 
-TESTING: 
+###TESTING: 
 * Mocha
 * Chai
 
