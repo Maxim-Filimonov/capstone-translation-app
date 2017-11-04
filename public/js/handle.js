@@ -46,7 +46,6 @@ var handle = {
     api.login(username, password)
       .then(response => {
         usernameGlobal = username;
-        state.username = usernameGlobal;
         state.token = response.authToken;
         localStorage.setItem('authToken', state.token);
         state.view = (state.backTo) ? state.backTo : 'dashboard';
