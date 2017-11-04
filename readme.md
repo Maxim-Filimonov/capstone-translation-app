@@ -1,22 +1,50 @@
-'TEXT-TO-AUDIO TRAVEL TRANSLATOR'
+#TEXT-TO-AUDIO TRAVEL TRANSLATOR
 
-This app allows users to translate input english text input to a selected output langauge in both written and speech formats. Users may select from a list of pre-populated, commonly used travel terms and in addition be able to create, read, update and delete their own statements from the same list. The supported ouput languages are: Spanish, French, German, Japanese, Portuguese-Brazil, and Italian.
+##ABOUT THIS PROJECT
+This app allows users to translate input english text input to a selected output langauge in both written and speech formats. Users may retrieve, create, modify and delete their own list of phrases to be translated. The supported ouput languages are: Spanish, French, German, Japanese, Portuguese-Brazil, and Italian.
 
+##KEY USER FEATURES
 AS a USER, you will be able to:
-(1) REGISTER for a profile 
-(2) LOGIN to the profile 
-(3) INPUT new statments in text field for immediate translation 
-(4) INPUT new statments in text field to save to user's list
-(5) VIEW saved statments from user's list 
-(6) UPDATE any statment from user's list 
-(7) DELETE any statment from user's list 
-(8) SELECT the desired translation output language
-(9) READ the translated output
-(10) HEAR the translated output
-(11) LOGOUT from the profile
+* REGISTER for a profile 
+* LOGIN to the profile 
+* INPUT new statments in text field for immediate translation 
+* INPUT new statments in text field to save to user's list
+* VIEW saved statments from user's list 
+* UPDATE any statment from user's list 
+* DELETE any statment from user's list 
+* SELECT the desired translation output language
+* READ the translated output
+* HEAR the translated output
+* LOGOUT from the profile
 
-As an admin, you have have access to all functions a USER have access to, plus: 
-(1) VIEW all users from the collection
-(2) SEARCH individual user from the collection
-(3) Update any user from the collection
-(4) Delete any user from the collection
+##TECHNOLOGY STACK
+FRONT-END TECHNOLOGIES:
+* JavaScript
+* CSS
+* HTML
+* jQuery
+
+SERVER TECHNOLOGIES:
+* IBM API: Watson Developer
+* RESTful API
+* Node JS
+* Express
+* Passport: Basic and JWT authentication
+
+DATA PERSISTENCE: 
+* ​MongoDB
+* mLab
+
+DEVELOPMENT/DEPLOYMENT: 
+* Travis CI
+* Heroku
+* Git & GitHub
+
+TESTING: 
+* Mocha
+* Chai
+
+##FUTURE DEVELOPMENT
+* Responsive design.
+* Implementing speech-to-text & speech-to-speech translation.
+* Add additional languages (i.e. Japanese due to unsupported format in header).
