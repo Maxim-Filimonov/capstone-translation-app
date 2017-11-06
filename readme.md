@@ -1,4 +1,4 @@
-# TEXT-To-SPEECH TRAVEL TRANSLATION APP [![Build Status](https://travis-ci.org/Thinkful-C15/capstone-translation-app.svg?branch=feature-quang)](https://travis-ci.org/Thinkful-C15/capstone-translation-app)
+# TEXT-TO-SPEECH TRAVEL TRANSLATION APP [![Build Status](https://travis-ci.org/Thinkful-C15/capstone-translation-app.svg?branch=feature-quang)](https://travis-ci.org/Thinkful-C15/capstone-translation-app)
 
 ## ABOUT THIS PROJECT
 This app allows users to translate english text input to a selected output langauge in both written and speech formats. Users may retrieve, create, modify and delete their own list of phrases to be translated. The supported ouput languages are: Spanish, French, German, Japanese, Portuguese-Brazil, and Italian.
@@ -16,6 +16,9 @@ AS a ***USER***, you will be able to:
 * READ the translated output
 * HEAR the translated output
 * LOGOUT from the profile
+
+## WIREFRAME
+<img src='https://ibb.co/g22FDG' width='600' alt='app wireframe'>
 
 ## TECHNOLOGY STACK
 
@@ -46,6 +49,6 @@ AS a ***USER***, you will be able to:
 * Chai
 
 ## FUTURE DEVELOPMENT
-* Responsive design.
-* Implementing speech-to-text & speech-to-speech translation.
-* Add additional languages (i.e. Japanese due to unsupported format in header).
+* Implement responsive design for smaller screens.
+* Implement speech-to-text & speech-to-speech translation.
+* Add additional languages (Japanese).
