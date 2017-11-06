@@ -18,7 +18,7 @@ AS a ***USER***, you will be able to:
 * LOGOUT from the profile
 
 ## WIREFRAME
-<img src='https://s20.postimg.org/tg478c6zx/Text_to_Speech_Translator.png' width='500' alt='app wireframe'>
+<img src='https://farm5.staticflickr.com/4520/24350825208_09e8faca59_o.png' width='500' alt='app wireframe'>
 
 ## TECHNOLOGY STACK
 
