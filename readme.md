@@ -1,12 +1,10 @@
-[![Build Status](https://travis-ci.org/Thinkful-C15/capstone-translation-app.svg?branch=feature-quang)](https://travis-ci.org/Thinkful-C15/capstone-translation-app)
+# TEXT-To-SPEECH TRAVEL TRANSLATION APP [![Build Status](https://travis-ci.org/Thinkful-C15/capstone-translation-app.svg?branch=feature-quang)](https://travis-ci.org/Thinkful-C15/capstone-translation-app)
 
-#TEXT-TO-AUDIO TRAVEL TRANSLATOR
+## ABOUT THIS PROJECT
+This app allows users to translate english text input to a selected output langauge in both written and speech formats. Users may retrieve, create, modify and delete their own list of phrases to be translated. The supported ouput languages are: Spanish, French, German, Japanese, Portuguese-Brazil, and Italian.
 
-##ABOUT THIS PROJECT
-This app allows users to translate input english text input to a selected output langauge in both written and speech formats. Users may retrieve, create, modify and delete their own list of phrases to be translated. The supported ouput languages are: Spanish, French, German, Japanese, Portuguese-Brazil, and Italian.
-
-##KEY USER FEATURES
-AS a USER, you will be able to:
+## KEY USER FEATURES
+AS a ***USER***, you will be able to:
 * REGISTER for a profile 
 * LOGIN to the profile 
 * INPUT new statments in text field for immediate translation 
@@ -19,35 +17,35 @@ AS a USER, you will be able to:
 * HEAR the translated output
 * LOGOUT from the profile
 
-##TECHNOLOGY STACK
+## TECHNOLOGY STACK
 
-###FRONT-END TECHNOLOGIES:
+### FRONT-END TECHNOLOGIES:
 * JavaScript
 * CSS
 * HTML
 * jQuery
 
-###SERVER TECHNOLOGIES:
+### SERVER TECHNOLOGIES:
 * IBM API: Watson Developer
 * RESTful API
 * Node JS
 * Express
 * Passport: Basic and JWT authentication
 
-###DATA PERSISTENCE: 
+### DATA PERSISTENCE: 
 * ​MongoDB
 * mLab
 
-###DEVELOPMENT/DEPLOYMENT: 
+### DEVELOPMENT/DEPLOYMENT: 
 * Travis CI
 * Heroku
 * Git & GitHub
 
-###TESTING: 
+### TESTING: 
 * Mocha
 * Chai
 
-##FUTURE DEVELOPMENT
+## FUTURE DEVELOPMENT
 * Responsive design.
 * Implementing speech-to-text & speech-to-speech translation.
 * Add additional languages (i.e. Japanese due to unsupported format in header).

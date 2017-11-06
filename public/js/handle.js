@@ -5,7 +5,6 @@
  * 
  * Event Handlers validate input, update STATE and call render methods
  */
-var usernameGlobal;
 var handle = {
   signup: function (event) {
     event.preventDefault();
@@ -45,7 +44,7 @@ var handle = {
     el.find('[name=password]').val('');
     api.login(username, password)
       .then(response => {
-        usernameGlobal = username;
+        state.username = username;
         state.token = response.authToken;
         localStorage.setItem('authToken', state.token);
         state.view = (state.backTo) ? state.backTo : 'dashboard';
